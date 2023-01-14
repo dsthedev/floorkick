@@ -1,63 +1,47 @@
 import type { Prisma } from '@prisma/client'
 import { db } from 'api/src/lib/db'
+import CryptoJS from 'crypto-js'
 
 export default async () => {
-  try {
-    //
-    // Manually seed via `yarn rw prisma db seed`
-    // Seeds automatically with `yarn rw prisma migrate dev` and `yarn rw prisma migrate reset`
-    //
-    // Update "const data = []" to match your data model and seeding needs
-    //
-    const data: Prisma.UserExampleCreateArgs['data'][] = [
-      // To try this example data with the UserExample model in schema.prisma,
-      // uncomment the lines below and run 'yarn rw prisma migrate dev'
-      //
-      // { name: 'alice', email: 'alice@example.com' },
-      // { name: 'mark', email: 'mark@example.com' },
-      // { name: 'jackie', email: 'jackie@example.com' },
-      // { name: 'bob', email: 'bob@example.com' },
-    ]
-    console.log(
-      "\nUsing the default './scripts/seed.{js,ts}' template\nEdit the file to add seed data\n"
-    )
+  console.warn('\nWARNING: REMOVING ALL USERS, THIS IS PERMANENT!')
+  await db.user.deleteMany()
 
-    // Note: if using PostgreSQL, using `createMany` to insert multiple records is much faster
-    // @see: https://www.prisma.io/docs/reference/api-reference/prisma-client-reference#createmany
-    Promise.all(
-      //
-      // Change to match your data model and seeding needs
-      //
-      data.map(async (data: Prisma.UserExampleCreateArgs['data']) => {
-        const record = await db.userExample.create({ data })
-        console.log(record)
-      })
-    )
+  const importUsersFromSeed = () => {
+    console.info('\nAttempting user seed import...')
+    try {
+      const userSeedsSource = require('./seeds/users.json')
+      const userSeedsData: Prisma.UserCreateArgs['data'][] = []
 
-    // If using dbAuth and seeding users, you'll need to add a `hashedPassword`
-    // and associated `salt` to their record. Here's how to create them using
-    // the same algorithm that dbAuth uses internally:
-    //
-    //   import { hashPassword } from '@redwoodjs/api'
-    //
-    //   const users = [
-    //     { name: 'john', email: 'john@example.com', password: 'secret1' },
-    //     { name: 'jane', email: 'jane@example.com', password: 'secret2' }
-    //   ]
-    //
-    //   for (user of users) {
-    //     const [hashedPassword, salt] = hashPassword(user.password)
-    //     await db.user.create({
-    //       data: {
-    //         name: user.name,
-    //         email: user.email,
-    //         hashedPassword,
-    //         salt
-    //       }
-    //     })
-    //   }
-  } catch (error) {
-    console.warn('Please define your seed data.')
-    console.error(error)
+      for (let i = 0; i < userSeedsSource.length; i++) {
+        const newSalt = CryptoJS.lib.WordArray.random(128 / 8).toString()
+
+        userSeedsData.push({
+          id: parseInt(userSeedsSource[i].id),
+          email: userSeedsSource[i].email,
+          hashedPassword: CryptoJS.PBKDF2(
+            userSeedsSource[i].unHashedPassword,
+            newSalt,
+            {
+              keySize: 256 / 32,
+            }
+          ).toString(),
+          salt: newSalt,
+          name: userSeedsSource[i].name,
+          roles: userSeedsSource[i].roles,
+        })
+      }
+
+      Promise.all(
+        userSeedsData.map(async (data: Prisma.UserCreateArgs['data']) => {
+          const record = await db.user.create({ data })
+          console.log('User [' + record.name + '] imported')
+        })
+      )
+    } catch (error) {
+      console.warn('Please define your seed data.')
+      console.error(error)
+    }
   }
+
+  importUsersFromSeed()
 }

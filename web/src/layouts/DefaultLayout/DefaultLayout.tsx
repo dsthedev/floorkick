@@ -1,12 +1,21 @@
+import { useAuth } from '@redwoodjs/auth'
+
 type DefaultLayoutProps = {
   children?: React.ReactNode
 }
 
 const DefaultLayout = ({ children }: DefaultLayoutProps) => {
-  return <>
-    <div id="svgbg" className="adventure"></div>
-    {children}
-  </>
+  const { isAuthenticated, logOut } = useAuth()
+
+  const determinedBackground = isAuthenticated ? 'forest' : 'adventure'
+
+  return (
+    <>
+      <div id="svgbg" className={determinedBackground}></div>
+
+      {children}
+    </>
+  )
 }
 
 export default DefaultLayout

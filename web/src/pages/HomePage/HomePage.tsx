@@ -1,5 +1,7 @@
-import { Link, routes } from '@redwoodjs/router'
 import { MetaTags } from '@redwoodjs/web'
+
+import LoginOrOutLink from 'src/components/LoginOrOutLink/LoginOrOutLink'
+import UserDetailsPrint from 'src/components/UserDetailsPrint/UserDetailsPrint'
 
 const HomePage = () => {
   return (
@@ -8,16 +10,10 @@ const HomePage = () => {
 
       <main>
         <h1>Floorkick</h1>
-        <button onClick={() => {
-          var bgClass = document.getElementById("svgbg").classList[0]
-
-          if (bgClass === 'adventure') {
-            document.getElementById("svgbg").className = 'forest'
-          }
-          if (bgClass === 'forest') {
-            document.getElementById("svgbg").className = 'adventure'
-          }
-        }}>Toggle Background</button>
+        <br />
+        <UserDetailsPrint />
+        <br />
+        <LoginOrOutLink />
       </main>
     </>
   )

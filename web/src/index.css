@@ -91,6 +91,7 @@ h1 {
 
 :where(ul, ol) {
   list-style-position: inside;
+  text-align: left;
 }
 
 :where(ul, ol)[role="list"] {

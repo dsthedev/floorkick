@@ -2,6 +2,8 @@
 
 STOP LOOKING AT CSS/DESIGN OPTIONS, FOCUS ON APP FEATURES!!!
 
+STORYBOOK > STUDIO > TESTS > DEV
+
 - Phase I:  How quickly can I get a working user system up and running?
   - Redwood dbAuth
   - Remote hosted postgres database
@@ -22,3 +24,17 @@ Invoices are the most important feature, but they rely on users, and will potent
   - Redwood dbAuth
   - Remote hosted postgres database
   - Netlify app hosting
+
+1. Connect a remote postgres db locally
+   1. create db+shadow, users & passes, build env vars, dont forget remote ip whitelist
+   2. setup user & notes db schemas + simple relationship (possibility, still needs validation)
+   3. test initial prisma migrate
+   4. test seed of 3 users
+   5. verify login / out works with toggline link
+   6. verify user details for logged in user shows
+   7.
+
+next up
+
+1. develop import/export button, match seed format
+2. only allow user import/export for developer role
