@@ -8,13 +8,17 @@ const LoginOrOutLink = () => {
 
   if (isAuthenticated) {
     linkHTML = (
-      <Link className="" to={routes.home()} onClick={logOut}>
+      <Link
+        className="button button-small button-red"
+        to={routes.home()}
+        onClick={logOut}
+      >
         Logout
       </Link>
     )
   } else {
     linkHTML = (
-      <Link className="" to={routes.login()}>
+      <Link className="button button-small button-green" to={routes.login()}>
         Login
       </Link>
     )

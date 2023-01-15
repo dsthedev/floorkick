@@ -2,6 +2,12 @@
 
 ## 2023.01.14
 
+- adds notes
+- ties userid to note on creation
+- only reads notes where userid matches
+- redirect on read if userid doesnt match
+- minor cleanup
+
 - updates gitignore for seeds
 - tests initial db seed migration of basic users
 - updates db schema

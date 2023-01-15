@@ -5,10 +5,10 @@ const UserDetailsPrint = () => {
 
   let detailsHTML = {}
 
-  if (isAuthenticated) {
+  if (isAuthenticated && currentUser) {
     detailsHTML = (
       <>
-        <h6>User Details:</h6>
+        <h6>Your Profile:</h6>
         <pre>
           <ul>
             <li>

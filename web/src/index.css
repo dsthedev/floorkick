@@ -182,7 +182,9 @@ pre, code {
 
 main {
   margin: 0 auto;
-  /* text-align: center; */
+  min-width: 360px;
+  max-width: 980px;
+  /* width: 100%; */
   padding: 1rem;
   background: rgba(255,255,255,0.8);
   border-radius: 0.5rem;
@@ -190,4 +192,59 @@ main {
 }
 main h1 {
   font-variant: small-caps;
+}
+
+/* .scaffold {
+  margin: 0 auto;
+} */
+
+hr {
+  margin: 1rem auto;
+}
+
+.text-left {
+  text-align: left;
+}
+.text-center {
+  text-align: center;
+}
+.text-right {
+  text-align: right;
+}
+
+.float-left {
+  float: left;
+}
+.float-right {
+  float: right;
+}
+
+.visually-hidden {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+.barred {
+  background: black;
+  color: black;
+  transition: all 0.2s ease-in;
+}
+
+.barred:hover,
+.barred:focus,
+.barred:active {
+  background: rgba(0, 0, 0, 0);
+  transition: all 0.4s ease-out;
+}
+
+hr {
+  border: 1px solid darkgrey;
+  margin: 1rem auto;
+  clear: both;
+  width: 100%;
 }

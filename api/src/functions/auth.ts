@@ -57,11 +57,11 @@ export const handler = async (
 
     errors: {
       usernameOrPasswordMissing: 'Both username and password are required',
-      usernameNotFound: 'Username ${username} not found',
+      usernameNotFound: 'User Not Found',
       // For security reasons you may want to make this the same as the
       // usernameNotFound error so that a malicious user can't use the error
       // to narrow down if it's the username or password that's incorrect
-      incorrectPassword: 'Incorrect password for ${username}',
+      incorrectPassword: 'Incorrect Credentials',
     },
 
     // How long a user will remain logged in, in seconds
@@ -129,7 +129,7 @@ export const handler = async (
     errors: {
       // `field` will be either "username" or "password"
       fieldMissing: '${field} is required',
-      usernameTaken: 'Username `${username}` already in use',
+      usernameTaken: 'User `${username}` already exists',
     },
   }
 

@@ -5,7 +5,7 @@ type DefaultLayoutProps = {
 }
 
 const DefaultLayout = ({ children }: DefaultLayoutProps) => {
-  const { isAuthenticated, logOut } = useAuth()
+  const { isAuthenticated } = useAuth()
 
   const determinedBackground = isAuthenticated ? 'forest' : 'adventure'
 

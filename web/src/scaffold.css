@@ -7,10 +7,6 @@
 .scaffold ::before {
   box-sizing: inherit;
 }
-.scaffold main {
-  color: #4a5568;
-  display: block;
-}
 .scaffold h1,
 .scaffold h2 {
   margin: 0;
@@ -44,21 +40,17 @@
   Style
 */
 
-.scaffold,
 .toast {
-  background-color: #fff;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
-    'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji',
-    'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  background-color: rgba(255,255,255,0.8);
 }
 .header {
   display: flex;
   justify-content: space-between;
   padding: 1rem 2rem 1rem 2rem;
 }
-.main {
+/* .main {
   padding-bottom: 1rem;
-}
+} */
 .segment {
   border-radius: 0.5rem;
   border-width: 1px;
@@ -289,9 +281,9 @@
 .table-wrapper-responsive {
   overflow-x: auto;
 }
-.table-wrapper-responsive .table {
+/* .table-wrapper-responsive .table {
   min-width: 48rem;
-}
+} */
 .table {
   table-layout: auto;
   width: 100%;
