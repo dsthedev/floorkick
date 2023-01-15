@@ -42,15 +42,15 @@ const NotesList = ({ notes }: FindNotes) => {
         <thead>
           <tr>
             {/* <th>Id</th> */}
-            <th>
-              <small>
+            <th colSpan={2}>
+              <small className="text-center">
                 {'[Notice: This is a beta feature, subject to change]'}
               </small>
             </th>
             {/* <th>User id</th> */}
             {/* <th>Created at</th> */}
             {/* <th>Updated at</th> */}
-            <th>&nbsp;</th>
+            {/* <th>&nbsp;</th> */}
           </tr>
         </thead>
         <tbody>

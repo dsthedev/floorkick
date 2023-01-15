@@ -1,7 +1,7 @@
 import type { FindNoteById } from 'types/graphql'
 
 import { useAuth } from '@redwoodjs/auth'
-import { Redirect, routes } from '@redwoodjs/router'
+import { navigate, routes } from '@redwoodjs/router'
 import type { CellSuccessProps, CellFailureProps } from '@redwoodjs/web'
 
 import Note from 'src/components/Note/Note'
@@ -32,6 +32,6 @@ export const Success = ({ note }: CellSuccessProps<FindNoteById>) => {
   if (note.userId === currentUser.id) {
     return <Note note={note} />
   } else {
-    return <Redirect to={routes.notes()}></Redirect>
+    return navigate(routes.notes())
   }
 }

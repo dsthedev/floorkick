@@ -248,3 +248,7 @@ hr {
   clear: both;
   width: 100%;
 }
+
+th small {
+  display: block;
+}
