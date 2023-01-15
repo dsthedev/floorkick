@@ -153,13 +153,15 @@ a:not([class]) {
   background-position: center center;
   background-size: cover;
   filter: blur(5px);
-  transition: 0.3s ease-in-out;
+  transition: 3s ease-in-out;
 }
 #svgbg.adventure {
-  background-image: url('./images/adventure.svg');
+  background-image: url('./images/adventure.jpg');
+  transform: scale(1.1);
 }
 #svgbg.forest {
-  background-image: url('./images/forest.svg');
+  background-image: url('./images/forest.jpg');
+  transform: scale(1);
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -180,7 +182,11 @@ pre, code {
 
 main {
   margin: 0 auto;
-  text-align: center;
+  /* text-align: center; */
+  padding: 1rem;
+  background: rgba(255,255,255,0.8);
+  border-radius: 0.5rem;
+  box-shadow: 0 0 1rem -0.5rem black;
 }
 main h1 {
   font-variant: small-caps;
