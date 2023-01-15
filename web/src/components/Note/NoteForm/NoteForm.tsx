@@ -22,7 +22,7 @@ interface NoteFormProps {
 }
 
 const NoteForm = (props: NoteFormProps) => {
-  const { isAuthenticated, currentUser } = useAuth()
+  const { currentUser } = useAuth()
   const onSubmit = (data: FormNote) => {
     props.onSave(data, props?.note?.id)
   }
@@ -52,21 +52,21 @@ const NoteForm = (props: NoteFormProps) => {
         <FieldError name="body" className="field-error" />
 
         <Label
-          name="userId"
+          name="authorId"
           className="label visually-hidden"
           errorClassName="label label-error"
         >
-          User id
+          Author ID
           <NumberField
-            name="userId"
-            defaultValue={props.note ? props.note.userId : currentUser.id}
+            name="authorId"
+            defaultValue={props.note ? props.note.authorId : currentUser.id}
             className="input"
             errorClassName="input input-error"
             readOnly
           />
         </Label>
 
-        <FieldError name="userId" className="field-error" />
+        <FieldError name="authorId" className="field-error" />
 
         <div className="button-group">
           <Submit disabled={props.loading} className="button button-blue">

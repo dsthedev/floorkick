@@ -47,7 +47,7 @@ const NotesList = ({ notes }: FindNotes) => {
                 {'[Notice: This is a beta feature, subject to change]'}
               </small>
             </th>
-            {/* <th>User id</th> */}
+            {/* <th>Author</th> */}
             {/* <th>Created at</th> */}
             {/* <th>Updated at</th> */}
             {/* <th>&nbsp;</th> */}
@@ -58,7 +58,7 @@ const NotesList = ({ notes }: FindNotes) => {
             <tr key={note.id}>
               {/* <td>{truncate(note.id)}</td> */}
               <td>{truncate(note.body)}</td>
-              {/* <td>{truncate(note.userId)}</td> */}
+              {/* <td>{truncate(note.authorId)}</td> */}
               {/* <td>{timeTag(note.createdAt)}</td> */}
               {/* <td>{timeTag(note.updatedAt)}</td> */}
               <td>

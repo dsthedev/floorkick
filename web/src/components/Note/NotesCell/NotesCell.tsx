@@ -10,7 +10,7 @@ export const QUERY = gql`
     notes {
       id
       body
-      userId
+      authorId
       createdAt
       updatedAt
     }

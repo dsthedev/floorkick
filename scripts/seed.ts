@@ -3,8 +3,9 @@ import { db } from 'api/src/lib/db'
 import CryptoJS from 'crypto-js'
 
 export default async () => {
-  console.warn('\nWARNING: REMOVING ALL USERS, THIS IS PERMANENT!')
+  console.warn('\nWARNING: REMOVING ALL USERS & NOTES, THIS IS PERMANENT!')
   await db.user.deleteMany()
+  await db.note.deleteMany()
 
   const importUsersFromSeed = () => {
     console.info('\nAttempting user seed import...')

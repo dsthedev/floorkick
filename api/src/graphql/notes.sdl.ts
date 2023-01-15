@@ -2,8 +2,8 @@ export const schema = gql`
   type Note {
     id: Int!
     body: String!
-    User: User
-    userId: Int
+    author: User
+    authorId: Int
     createdAt: DateTime!
     updatedAt: DateTime!
   }
@@ -15,12 +15,12 @@ export const schema = gql`
 
   input CreateNoteInput {
     body: String!
-    userId: Int
+    authorId: Int
   }
 
   input UpdateNoteInput {
     body: String
-    userId: Int
+    authorId: Int
   }
 
   type Mutation {

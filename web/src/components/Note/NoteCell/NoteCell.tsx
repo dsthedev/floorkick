@@ -11,7 +11,7 @@ export const QUERY = gql`
     note: note(id: $id) {
       id
       body
-      userId
+      authorId
       createdAt
       updatedAt
     }
@@ -29,7 +29,7 @@ export const Failure = ({ error }: CellFailureProps) => (
 export const Success = ({ note }: CellSuccessProps<FindNoteById>) => {
   const { currentUser } = useAuth()
 
-  if (note.userId === currentUser.id) {
+  if (note.authorId === currentUser.id) {
     return <Note note={note} />
   } else {
     return navigate(routes.notes())

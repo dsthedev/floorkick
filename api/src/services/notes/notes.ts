@@ -9,7 +9,7 @@ import { db } from 'src/lib/db'
 export const notes: QueryResolvers['notes'] = () => {
   return db.note.findMany({
     where: {
-      userId: {
+      authorId: {
         equals: context.currentUser.id,
       },
     },
@@ -19,9 +19,9 @@ export const notes: QueryResolvers['notes'] = () => {
   })
 }
 
-export const note: QueryResolvers['note'] = ({ id, userId }) => {
+export const note: QueryResolvers['note'] = ({ id }) => {
   return db.note.findFirst({
-    where: { id },
+    where: { id, authorId: context.currentUser.id },
   })
 }
 
@@ -45,7 +45,7 @@ export const deleteNote: MutationResolvers['deleteNote'] = ({ id }) => {
 }
 
 export const Note: NoteRelationResolvers = {
-  User: (_obj, { root }) => {
-    return db.note.findUnique({ where: { id: root?.id } }).User()
+  author: (_obj, { root }) => {
+    return db.note.findUnique({ where: { id: root?.id } }).author()
   },
 }

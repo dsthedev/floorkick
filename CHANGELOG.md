@@ -2,6 +2,9 @@
 
 ## 2023.01.14
 
+- gracefully handle "unauthorized" access to notes by others
+- migrate/update db schema to use authorId instead of userId
+
 - adds notes
 - ties userid to note on creation
 - only reads notes where userid matches

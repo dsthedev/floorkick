@@ -53,7 +53,7 @@ const Note = ({ note }: Props) => {
             </tr>
             {/* <tr>
               <th>User id</th>
-              <td>{note.userId}</td>
+              <td>{note.authorId}</td>
             </tr> */}
             {/* <tr>
               <th>Created at</th>
