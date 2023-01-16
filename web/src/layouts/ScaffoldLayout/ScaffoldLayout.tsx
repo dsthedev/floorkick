@@ -10,7 +10,7 @@ type LayoutProps = {
   titleTo: string
   buttonLabel: string
   buttonTo: string
-  isHome: boolean
+  hideButtons: boolean
   children: React.ReactNode
 }
 
