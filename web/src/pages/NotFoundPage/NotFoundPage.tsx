@@ -1,5 +1,5 @@
 export default () => (
-  <main>
+  <section>
     <style
       dangerouslySetInnerHTML={{
         __html: `
@@ -40,5 +40,5 @@ export default () => (
         <span>404 Page Not Found</span>
       </h1>
     </section>
-  </main>
+  </section>
 )

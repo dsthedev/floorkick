@@ -60,7 +60,7 @@ const ResetPasswordPage = ({ resetToken }: { resetToken: string }) => {
     <>
       <MetaTags title="Reset Password" />
 
-      <main className="main">
+      <section>
         <Toaster toastOptions={{ className: 'toast', duration: 6000 }} />
         <div className="scaffold login-container">
           <div className="segment">
@@ -112,7 +112,7 @@ const ResetPasswordPage = ({ resetToken }: { resetToken: string }) => {
             </div>
           </div>
         </div>
-      </main>
+      </section>
     </>
   )
 }

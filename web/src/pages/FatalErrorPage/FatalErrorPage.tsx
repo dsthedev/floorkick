@@ -16,7 +16,7 @@ if (process.env.NODE_ENV === 'development') {
 
 export default RedwoodDevFatalErrorPage ||
   (() => (
-    <main>
+    <section>
       <style
         dangerouslySetInnerHTML={{
           __html: `
@@ -57,5 +57,5 @@ export default RedwoodDevFatalErrorPage ||
           <span>Something went wrong</span>
         </h1>
       </section>
-    </main>
+    </section>
   ))

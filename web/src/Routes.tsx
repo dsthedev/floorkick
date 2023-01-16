@@ -2,8 +2,6 @@ import { Set, Router, Route } from '@redwoodjs/router'
 
 import ScaffoldLayout from 'src/layouts/ScaffoldLayout'
 
-import DefaultLayout from './layouts/DefaultLayout/DefaultLayout'
-
 const Routes = () => {
   return (
     <Router>
@@ -15,12 +13,12 @@ const Routes = () => {
       </Set>
       <Route notfound page={NotFoundPage} />
 
-      <Set wrap={DefaultLayout}>
+      <Set wrap={ScaffoldLayout} title="Floorkick" titleTo="home" hideButtons>
         <Route path="/" page={HomePage} name="home" />
 
         <Route path="/login" page={LoginPage} name="login" />
         {/* <Route path="/signup" page={SignupPage} name="signup" /> */}
-        <Route path="/forgot-password" page={ForgotPasswordPage} name="forgotPassword" />
+        {/* <Route path="/forgot-password" page={ForgotPasswordPage} name="forgotPassword" /> */}
         <Route path="/reset-password" page={ResetPasswordPage} name="resetPassword" />
       </Set>
 

@@ -2,15 +2,15 @@ import { useAuth } from '@redwoodjs/auth'
 import { Link, routes } from '@redwoodjs/router'
 import { Toaster } from '@redwoodjs/web/toast'
 
-import LoginOrOutLink from 'src/components/LoginOrOutLink/LoginOrOutLink'
-
 import DefaultLayout from '../DefaultLayout/DefaultLayout'
+import LoginOrOutLink from 'src/components/LoginOrOutLink/LoginOrOutLink'
 
 type LayoutProps = {
   title: string
   titleTo: string
   buttonLabel: string
   buttonTo: string
+  isHome: boolean
   children: React.ReactNode
 }
 
@@ -19,6 +19,7 @@ const ScaffoldLayout = ({
   titleTo,
   buttonLabel,
   buttonTo,
+  hideButtons,
   children,
 }: LayoutProps) => {
   const { isAuthenticated, currentUser } = useAuth()
@@ -34,39 +35,49 @@ const ScaffoldLayout = ({
                 {title}
               </Link>
             </h1>
-            <Link
-              to={routes[buttonTo]()}
-              className="button button-green text-right"
-            >
-              <div className="button-icon">+</div> {buttonLabel}
-            </Link>
-          </header>
-          <section className="main">{children}</section>
-          <section>
-            <p className="text-center">
-              <small>
-                {isAuthenticated
-                  ? 'Thanks for checking out Floorkick, ' +
-                    currentUser.name +
-                    '!'
-                  : ''}
-              </small>
-            </p>
-            <hr />
-          </section>
-          <footer>
-            <span className="float-left">
-              <Link className="button button-orange" to={routes.home()}>
-                Return Home
+            {(hideButtons) ? false : (
+              <Link
+                to={routes[buttonTo]()}
+                className="button button-green text-right"
+              >
+                <div className="button-icon">+</div> {buttonLabel}
               </Link>
-            </span>
-            <span className="float-right">
-              <LoginOrOutLink />
-            </span>
-          </footer>
+            )}
+          </header>
+
+          <section className="main">{children}</section>
+
+          {isAuthenticated ? (
+            <section>
+              <hr />
+              <p className="text-center">
+                <small>
+                  {'Thanks for checking out Floorkick, ' +
+                    currentUser.name +
+                    '!'}
+                </small>
+              </p>
+              <hr />
+            </section>
+          ) : false}
+
+          {(hideButtons) ? false : (
+            <>
+              <footer>
+                <span className="float-left">
+                  <Link className="button button-orange" to={routes.home()}>
+                    Return Home
+                  </Link>
+                </span>
+                <span className="float-right">
+                  <LoginOrOutLink />
+                </span>
+              </footer>
+            </>
+          )}
         </div>
       </main>
-    </DefaultLayout>
+    </DefaultLayout >
   )
 }
 

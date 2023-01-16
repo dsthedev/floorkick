@@ -1,6 +1,25 @@
 {
   "version": "0.3.0",
   "configurations": [
+
+    {
+      "command": "yarn rw storybook",
+      "name": "Storybook (Redwood)",
+      "request": "launch",
+      "type": "node-terminal"
+    },
+    {
+      "command": "yarn rw prisma studio",
+      "name": "Prisma Studio (Redwood)",
+      "request": "launch",
+      "type": "node-terminal"
+    },
+    {
+      "command": "yarn rw prisma migrate",
+      "name": "DB Dev Migration (Redwood)",
+      "request": "launch",
+      "type": "node-terminal"
+    },
     {
       "command": "yarn redwood dev --apiDebugPort 18911",
       "name": "Run Dev Server",

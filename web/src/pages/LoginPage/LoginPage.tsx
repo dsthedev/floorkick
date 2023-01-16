@@ -44,12 +44,12 @@ const LoginPage = () => {
     <>
       <MetaTags title="Login" />
 
-      <main className="main">
+      <section>
         <Toaster toastOptions={{ className: 'toast', duration: 6000 }} />
         <div className="scaffold login-container">
           <div className="segment">
             <header className="segment-header">
-              <h2 className="heading heading-secondary">Welcome to Floorkick</h2>
+              {/* <h2 className="heading heading-secondary">Log in</h2> */}
             </header>
 
             <div className="segment-main">
@@ -97,14 +97,14 @@ const LoginPage = () => {
                     }}
                   />
 
-                  <div className="forgot-link">
+                  {/* <div className="forgot-link">
                     <Link
                       to={routes.forgotPassword()}
                       className="forgot-link"
                     >
                       Forgot Password?
                     </Link>
-                  </div>
+                  </div> */}
 
                   <FieldError name="password" className="field-error" />
 
@@ -116,7 +116,7 @@ const LoginPage = () => {
             </div>
           </div>
         </div>
-      </main>
+      </section>
     </>
   )
 }

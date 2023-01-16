@@ -46,7 +46,7 @@ const SignupPage = () => {
     <>
       <MetaTags title="Signup" />
 
-      <main className="main">
+      <section>
         <Toaster toastOptions={{ className: 'toast', duration: 6000 }} />
         <div className="scaffold login-container">
           <div className="segment">
@@ -115,7 +115,7 @@ const SignupPage = () => {
             </Link>
           </div>
         </div>
-      </main>
+      </section>
     </>
   )
 }

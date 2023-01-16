@@ -40,7 +40,7 @@ const ForgotPasswordPage = () => {
     <>
       <MetaTags title="Forgot Password" />
 
-      <main className="main">
+      <section>
         <Toaster toastOptions={{ className: 'toast', duration: 6000 }} />
         <div className="scaffold login-container">
           <div className="segment">
@@ -85,7 +85,7 @@ const ForgotPasswordPage = () => {
             </div>
           </div>
         </div>
-      </main>
+      </section>
     </>
   )
 }
