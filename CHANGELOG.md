@@ -1,6 +1,12 @@
 # Floorkick Changelog
 
-## 2023.01.14
+## 2023.01.16
+
+- add privacy & sandbox pages
+- add sample calculator component for roll length based on roll with and total yards
+- starts using roles to authorize sets of pages (developer only for editing users)
+
+## 2023.01.15
 
 - gracefully handle "unauthorized" access to notes by others
 - migrate/update db schema to use authorId instead of userId
@@ -20,6 +26,8 @@
 - new userdetails component for quick view of currently logged in user info
 - minor css updates
 - prep for live push test
+
+## 2023.01.14
 
 - initial commit
 - add css reset
