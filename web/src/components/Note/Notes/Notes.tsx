@@ -4,6 +4,7 @@ import { Link, routes } from '@redwoodjs/router'
 import { useMutation } from '@redwoodjs/web'
 import { toast } from '@redwoodjs/web/toast'
 
+import DownloadAsFile from 'src/components/fn/DownloadAsFile/DownloadAsFile'
 import { QUERY } from 'src/components/Note/NotesCell'
 import { timeTag, truncate } from 'src/lib/formatters'
 
@@ -36,24 +37,35 @@ const NotesList = ({ notes }: FindNotes) => {
     }
   }
 
+  const exportToJson = (e) => {
+    e.preventDefault()
+    DownloadAsFile({
+      data: JSON.stringify(notes),
+      fileName: 'my-floorkick-notes.json',
+      fileType: 'text/json',
+    })
+  }
+
   return (
     <div className="segment table-wrapper-responsive">
       <table className="table">
         <thead>
           <tr>
             {/* <th>Id</th> */}
-            <th colSpan={2}></th>
-            {/* <th>Author</th> */}
+            <th>Title</th>
+            {/* <th>Content</th> */}
+            {/* <th>Author id</th> */}
             {/* <th>Created at</th> */}
             {/* <th>Updated at</th> */}
-            {/* <th>&nbsp;</th> */}
+            <th>&nbsp;</th>
           </tr>
         </thead>
         <tbody>
           {notes.map((note) => (
             <tr key={note.id}>
               {/* <td>{truncate(note.id)}</td> */}
-              <td>{truncate(note.body)}</td>
+              <td>{truncate(note.title)}</td>
+              {/* <td>{truncate(note.content)}</td> */}
               {/* <td>{truncate(note.authorId)}</td> */}
               {/* <td>{timeTag(note.createdAt)}</td> */}
               {/* <td>{timeTag(note.updatedAt)}</td> */}
@@ -62,21 +74,21 @@ const NotesList = ({ notes }: FindNotes) => {
                   <Link
                     to={routes.note({ id: note.id })}
                     title={'Show note ' + note.id + ' detail'}
-                    className="button button-small"
+                    className="button small"
                   >
                     Show
                   </Link>
                   <Link
                     to={routes.editNote({ id: note.id })}
                     title={'Edit note ' + note.id}
-                    className="button button-small button-blue"
+                    className="button small secondary"
                   >
                     Edit
                   </Link>
                   <button
                     type="button"
                     title={'Delete note ' + note.id}
-                    className="button button-small button-red"
+                    className="button small alert"
                     onClick={() => onDeleteClick(note.id)}
                   >
                     Delete
@@ -87,6 +99,11 @@ const NotesList = ({ notes }: FindNotes) => {
           ))}
         </tbody>
       </table>
+      <section className="text-right">
+        <button onClick={exportToJson} className="button tiny warning">
+          Download All as JSON
+        </button>
+      </section>
     </div>
   )
 }

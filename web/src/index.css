@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@300&family=Source+Sans+3:wght@300&family=Source+Serif+4:opsz@8..60&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@300&family=Source+Sans+3:wght@300&family=Source+Serif+4:opsz@8..60&display=swap");
 
 * {
   margin: 0;
@@ -34,7 +34,7 @@ body {
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeSpeed;
   min-block-size: 100%;
-  font-family: 'Source Sans 3';
+  font-family: "Source Sans 3";
 }
 
 :where(img, svg, video, canvas, audio, iframe, embed, object) {
@@ -83,10 +83,6 @@ body {
 
 :where(p, h1, h2, h3, h4, h5, h6) {
   overflow-wrap: break-word;
-}
-
-h1 {
-  font-size: 2em;
 }
 
 :where(ul, ol) {
@@ -143,9 +139,22 @@ a:not([class]) {
   cursor: not-allowed;
 }
 
+body {
+  background-color: black;
+}
+
+#redwood-app {
+  display: flex;
+  width: 100%;
+  /* height: 100vh; */
+  align-items: center;
+  justify-items: center;
+  padding: 2rem 1rem 0;
+}
+
 #svgbg {
   z-index: -1;
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
@@ -153,53 +162,40 @@ a:not([class]) {
   background-position: center center;
   background-size: cover;
   filter: blur(5px);
-  transition: 3s ease-in-out;
+  transition: 2s ease-in-out;
+  box-shadow: 0 0 0 1rem black;
 }
-#svgbg.adventure {
-  background-image: url('./images/adventure.jpg');
+#svgbg.zoomed {
   transform: scale(1.1);
 }
+#svgbg.adventure {
+  background-image: url("./images/adventure.jpg");
+}
 #svgbg.forest {
-  background-image: url('./images/forest.jpg');
-  transform: scale(1);
+  background-image: url("./images/forest.jpg");
+}
+#svgbg.flooring {
+  background-image: url("./images/flooring.jpg");
 }
 
-h1, h2, h3, h4, h5, h6 {
-  font-family: 'Source Serif 4';
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Source Serif 4";
 }
 
-pre, code {
-  font-family: 'Source Code Pro';
+pre,
+code {
+  font-family: "Source Code Pro";
 }
 
-#redwood-app {
-  display: flex;
+main.main {
+  margin: 2rem auto;
   width: 100%;
-  height: 100vh;
-  align-items: center;
-  justify-items: center;
-}
-
-main {
-  margin: 0 auto;
-  min-width: 320px;
-  max-width: 980px;
-  /* width: 100%; */
-  padding: 1rem;
-  background: rgba(255,255,255,0.8);
-  border-radius: 0.5rem;
-  box-shadow: 0 0 1rem -0.5rem black;
-}
-main h1 {
-  font-variant: small-caps;
-}
-
-/* .scaffold {
-  margin: 0 auto;
-} */
-
-hr {
-  margin: 1rem auto;
+  max-width: 64em;
 }
 
 .text-left {
@@ -242,13 +238,22 @@ hr {
   transition: all 0.4s ease-out;
 }
 
-hr {
-  border: 1px solid darkgrey;
-  margin: 1rem auto;
-  clear: both;
-  width: 100%;
+header .breadcrumbs,
+header .button {
+  margin: 0;
 }
 
-th small {
-  display: block;
+.scaffold {
+  min-width: 360px;
+  margin: 0 auto;
+  padding: 1rem;
+  background: rgba(255,255,255,0.8);
+  border: 1px solid black;
+}
+.scaffold .menu.vertical li {
+  margin-bottom: 1rem;
+}
+
+.input-group input {
+  margin: 0;
 }

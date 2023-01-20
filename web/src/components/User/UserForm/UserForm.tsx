@@ -57,7 +57,7 @@ const UserForm = (props: UserFormProps) => {
           validation={{ required: true }}
         />
 
-        <FieldError name="email" className="field-error" />
+        <FieldError name="email" className="form-error" />
 
         <Label
           name="hashedPassword"
@@ -75,7 +75,7 @@ const UserForm = (props: UserFormProps) => {
           validation={{ required: true }}
         />
 
-        <FieldError name="hashedPassword" className="field-error" />
+        <FieldError name="hashedPassword" className="form-error" />
 
         <Label name="salt" className="label" errorClassName="label label-error">
           Salt
@@ -89,7 +89,7 @@ const UserForm = (props: UserFormProps) => {
           validation={{ required: true }}
         />
 
-        <FieldError name="salt" className="field-error" />
+        <FieldError name="salt" className="form-error" />
 
         <Label
           name="resetToken"
@@ -106,7 +106,7 @@ const UserForm = (props: UserFormProps) => {
           errorClassName="input input-error"
         />
 
-        <FieldError name="resetToken" className="field-error" />
+        <FieldError name="resetToken" className="form-error" />
 
         <Label
           name="resetTokenExpiresAt"
@@ -123,7 +123,7 @@ const UserForm = (props: UserFormProps) => {
           errorClassName="input input-error"
         />
 
-        <FieldError name="resetTokenExpiresAt" className="field-error" />
+        <FieldError name="resetTokenExpiresAt" className="form-error" />
 
         <Label name="name" className="label" errorClassName="label label-error">
           Name
@@ -137,7 +137,7 @@ const UserForm = (props: UserFormProps) => {
           validation={{ required: true }}
         />
 
-        <FieldError name="name" className="field-error" />
+        <FieldError name="name" className="form-error" />
 
         <Label
           name="roles"
@@ -155,10 +155,10 @@ const UserForm = (props: UserFormProps) => {
           validation={{ required: true }}
         />
 
-        <FieldError name="roles" className="field-error" />
+        <FieldError name="roles" className="form-error" />
 
-        <div className="button-group">
-          <Submit disabled={props.loading} className="button button-blue">
+        <div className="buttongroup">
+          <Submit disabled={props.loading} className="button secondary">
             Save
           </Submit>
         </div>

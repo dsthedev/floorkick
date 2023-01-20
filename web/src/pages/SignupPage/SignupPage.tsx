@@ -110,7 +110,7 @@ const SignupPage = () => {
           </div>
           <div className="login-link">
             <span>Already have an account?</span>{' '}
-            <Link to={routes.login()} className="link">
+            <Link to={routes.login()} className="button">
               Log in!
             </Link>
           </div>

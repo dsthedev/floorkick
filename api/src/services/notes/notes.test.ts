@@ -24,21 +24,21 @@ describe('notes', () => {
 
   scenario('creates a note', async () => {
     const result = await createNote({
-      input: { body: 'String2761344', updatedAt: '2023-01-15T00:41:07.742Z' },
+      input: { title: 'String', updatedAt: '2023-01-19T20:40:15.500Z' },
     })
 
-    expect(result.body).toEqual('String2761344')
-    expect(result.updatedAt).toEqual(new Date('2023-01-15T00:41:07.742Z'))
+    expect(result.title).toEqual('String')
+    expect(result.updatedAt).toEqual(new Date('2023-01-19T20:40:15.500Z'))
   })
 
   scenario('updates a note', async (scenario: StandardScenario) => {
     const original = (await note({ id: scenario.note.one.id })) as Note
     const result = await updateNote({
       id: original.id,
-      input: { body: 'String9712132' },
+      input: { title: 'String2' },
     })
 
-    expect(result.body).toEqual('String9712132')
+    expect(result.title).toEqual('String2')
   })
 
   scenario('deletes a note', async (scenario: StandardScenario) => {

@@ -6,6 +6,7 @@ import {
   FormError,
   FieldError,
   Label,
+  TextField,
   NumberField,
   Submit,
   TextAreaField,
@@ -23,6 +24,7 @@ interface NoteFormProps {
 
 const NoteForm = (props: NoteFormProps) => {
   const { currentUser } = useAuth()
+
   const onSubmit = (data: FormNote) => {
     props.onSave(data, props?.note?.id)
   }
@@ -37,39 +39,65 @@ const NoteForm = (props: NoteFormProps) => {
           listClassName="form-error-list"
         />
 
-        <Label name="body" className="label" errorClassName="label label-error">
-          <span className="visually-hidden">Body</span>
-          <TextAreaField
-            name="body"
-            defaultValue={props.note?.body}
+        <div className="input-group">
+          <Label
+            name="title"
+            className="label"
+            errorClassName="label label-error"
+          >
+            Title
+          </Label>
+
+          <TextField
+            name="title"
+            defaultValue={props.note?.title}
             className="input"
             errorClassName="input input-error"
             validation={{ required: true }}
-            rows="4"
           />
-        </Label>
 
-        <FieldError name="body" className="field-error" />
+          <FieldError name="title" className="form-error" />
+        </div>
 
         <Label
-          name="authorId"
-          className="label visually-hidden"
+          name="content"
+          className="label"
           errorClassName="label label-error"
         >
-          Author ID
+          Content
+        </Label>
+
+        <TextAreaField
+          rows={4}
+          name="content"
+          defaultValue={props.note?.content}
+          className="input"
+          errorClassName="input input-error"
+        />
+
+        <FieldError name="content" className="form-error" />
+
+        <div className="input-group">
+          <Label
+            name="authorId"
+            className="label visually-hidden"
+            errorClassName="label label-error"
+          >
+            Author id
+          </Label>
+
           <NumberField
             name="authorId"
             defaultValue={props.note ? props.note.authorId : currentUser.id}
-            className="input"
+            className="input visually-hidden"
             errorClassName="input input-error"
-            readOnly
           />
-        </Label>
 
-        <FieldError name="authorId" className="field-error" />
+          <FieldError name="authorId" className="form-error" />
+        </div>
 
-        <div className="button-group">
-          <Submit disabled={props.loading} className="button button-blue">
+        <div className="buttongroup">
+          <Submit disabled={props.loading} className="button secondary">
             Save
           </Submit>
         </div>

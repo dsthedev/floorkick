@@ -43,15 +43,15 @@ const User = ({ user }: Props) => {
         </header>
         <table className="table">
           <tbody>
-            <tr>
+            {/* <tr>
               <th>Id</th>
               <td>{user.id}</td>
-            </tr>
+            </tr> */}
             <tr>
               <th>Email</th>
               <td>{user.email}</td>
             </tr>
-            <tr>
+            {/* <tr>
               <th>Hashed password</th>
               <td>{user.hashedPassword}</td>
             </tr>
@@ -66,7 +66,7 @@ const User = ({ user }: Props) => {
             <tr>
               <th>Reset token expires at</th>
               <td>{timeTag(user.resetTokenExpiresAt)}</td>
-            </tr>
+            </tr> */}
             <tr>
               <th>Name</th>
               <td>{user.name}</td>
@@ -75,27 +75,27 @@ const User = ({ user }: Props) => {
               <th>Roles</th>
               <td>{user.roles}</td>
             </tr>
-            <tr>
+            {/* <tr>
               <th>Created at</th>
               <td>{timeTag(user.createdAt)}</td>
             </tr>
             <tr>
               <th>Updated at</th>
               <td>{timeTag(user.updatedAt)}</td>
-            </tr>
+            </tr> */}
           </tbody>
         </table>
       </div>
-      <nav className="button-group">
+      <nav className="buttongroup">
         <Link
           to={routes.editUser({ id: user.id })}
-          className="button button-blue"
+          className="button secondary visually-hidden"
         >
           Edit
         </Link>
         <button
           type="button"
-          className="button button-red"
+          className="button alert"
           onClick={() => onDeleteClick(user.id)}
         >
           Delete

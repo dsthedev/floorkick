@@ -39,7 +39,7 @@ const Note = ({ note }: Props) => {
     <>
       <div className="segment">
         <header className="segment-header">
-          <h2 className="heading heading-secondary">Note #{note.id}</h2>
+          <h2 className="heading heading-secondary">Note {note.id} Detail</h2>
         </header>
         <table className="table">
           <tbody>
@@ -48,34 +48,38 @@ const Note = ({ note }: Props) => {
               <td>{note.id}</td>
             </tr> */}
             <tr>
-              <th>&nbsp;</th>
-              <td>{note.body}</td>
+              <th>Title</th>
+              <td>{note.title}</td>
+            </tr>
+            <tr>
+              <th>Content</th>
+              <td>{note.content}</td>
             </tr>
             {/* <tr>
-              <th>User id</th>
+              <th>Author id</th>
               <td>{note.authorId}</td>
             </tr> */}
             {/* <tr>
               <th>Created at</th>
               <td>{timeTag(note.createdAt)}</td>
-            </tr> */}
-            {/* <tr>
+            </tr>
+            <tr>
               <th>Updated at</th>
               <td>{timeTag(note.updatedAt)}</td>
             </tr> */}
           </tbody>
         </table>
       </div>
-      <nav className="button-group">
+      <nav className="buttongroup">
         <Link
           to={routes.editNote({ id: note.id })}
-          className="button button-blue"
+          className="button secondary"
         >
           Edit
         </Link>
         <button
           type="button"
-          className="button button-red"
+          className="button alert"
           onClick={() => onDeleteClick(note.id)}
         >
           Delete

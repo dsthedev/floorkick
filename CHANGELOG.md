@@ -1,5 +1,23 @@
 # Floorkick Changelog
 
+## 2023.01.19
+
+- push v1!
+- adds realms for addresses (wip)
+- adds servicerate from before
+- big db schema update + new migrations
+- major design swap (foundation) and cleanup
+- major component updates to hide/manage fields
+- ownership by users of notes/realms/rates all work properly now...
+- move utility function components to `fn/`
+- new calculator page
+- changes how layouts are used in case of `rw d scaffold` use
+- probably other stuff im missing here, went on a streak today
+
+## 2023.01.18
+
+- adds v1 of Place model to manage addresses
+
 ## 2023.01.16
 
 - add privacy & sandbox pages

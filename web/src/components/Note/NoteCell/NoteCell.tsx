@@ -1,7 +1,5 @@
 import type { FindNoteById } from 'types/graphql'
 
-import { useAuth } from '@redwoodjs/auth'
-import { navigate, routes } from '@redwoodjs/router'
 import type { CellSuccessProps, CellFailureProps } from '@redwoodjs/web'
 
 import Note from 'src/components/Note/Note'
@@ -10,7 +8,8 @@ export const QUERY = gql`
   query FindNoteById($id: Int!) {
     note: note(id: $id) {
       id
-      body
+      title
+      content
       authorId
       createdAt
       updatedAt
@@ -27,11 +26,5 @@ export const Failure = ({ error }: CellFailureProps) => (
 )
 
 export const Success = ({ note }: CellSuccessProps<FindNoteById>) => {
-  const { currentUser } = useAuth()
-
-  if (note.authorId === currentUser.id) {
-    return <Note note={note} />
-  } else {
-    return navigate(routes.notes())
-  }
+  return <Note note={note} />
 }

@@ -1,9 +1,9 @@
 import { useState } from 'react'
 
 const CalculateRollLengthFromTotalYardage = () => {
-  const [yardage, setYardage] = useState(0)
+  const [yardage, setYardage] = useState(100)
   const [rollWidth, setRollWidth] = useState(12)
-  const [length, setLength] = useState(0)
+  const [length, setLength] = useState(75)
 
   const handleYardageChange = (e) => {
     setYardage(e.target.value)
@@ -16,34 +16,30 @@ const CalculateRollLengthFromTotalYardage = () => {
   }
 
   return (
-    <div>
+    <div className="callout small">
       <header>
         <h4>Estimate Roll Length From Total Yardage</h4>
       </header>
 
       <section>
-        <label className="label">
-          Total Yardage
-          <input
-            className="input"
-            type="number"
-            value={yardage}
-            onChange={handleYardageChange}
-            placeholder="100"
-          />
-        </label>
+        <label className="label">Total Yardage</label>
+        <input
+          className="input"
+          type="number"
+          value={yardage}
+          onChange={handleYardageChange}
+          placeholder="100"
+        />
 
-        <label className="label">
-          Roll Width
-          <select
-            value={rollWidth}
-            onChange={handleRollWidthChange}
-            className="input"
-          >
-            <option value="12">12'</option>
-            <option value="15">15'</option>
-          </select>
-        </label>
+        <label className="label">Roll Width</label>
+        <select
+          value={rollWidth}
+          onChange={handleRollWidthChange}
+          className="input"
+        >
+          <option value="12">12'</option>
+          <option value="15">15'</option>
+        </select>
       </section>
 
       <br />

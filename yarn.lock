@@ -12861,6 +12861,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"foundation-sites@npm:^6.7.5":
+  version: 6.7.5
+  resolution: "foundation-sites@npm:6.7.5"
+  peerDependencies:
+    jquery: ">=3.6.0"
+    motion-ui: "*"
+    what-input: ">=5.2.10"
+  checksum: d3763d2fb7a90c7fa52bf6746b55845ba1c9ad55f695affad98357627f2aefadf67ac56893ac62b1f5d3a8252a21599b1eb2e315bba2a0fe8d6c48290dc8f4e2
+  languageName: node
+  linkType: hard
+
 "fp-ts@npm:2.13.1":
   version: 2.13.1
   resolution: "fp-ts@npm:2.13.1"
@@ -23547,6 +23558,7 @@ __metadata:
     "@redwoodjs/forms": 3.8.0
     "@redwoodjs/router": 3.8.0
     "@redwoodjs/web": 3.8.0
+    foundation-sites: ^6.7.5
     humanize-string: 2.1.0
     prop-types: 15.8.1
     react: 17.0.2

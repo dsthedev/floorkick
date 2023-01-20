@@ -8,9 +8,11 @@ export const schema = gql`
     resetTokenExpiresAt: DateTime
     name: String!
     roles: String!
-    notes: [Note]!
     createdAt: DateTime!
     updatedAt: DateTime!
+    notes: [Note]!
+    realm: [Realm]!
+    ServiceRate: [ServiceRate]!
   }
 
   type Query {

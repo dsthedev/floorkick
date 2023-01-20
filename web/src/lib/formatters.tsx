@@ -2,7 +2,7 @@ import React from 'react'
 
 import humanize from 'humanize-string'
 
-const MAX_STRING_LENGTH = 40
+const MAX_STRING_LENGTH = 150
 
 export const formatEnum = (values: string | string[] | null | undefined) => {
   let output = ''

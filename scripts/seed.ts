@@ -4,11 +4,12 @@ import CryptoJS from 'crypto-js'
 
 export default async () => {
   console.warn('\nWARNING: REMOVING ALL USERS & NOTES, THIS IS PERMANENT!')
-  await db.user.deleteMany()
-  await db.note.deleteMany()
 
-  const importUsersFromSeed = () => {
+  await db.user.deleteMany()
+
+  const importUsers = () => {
     console.info('\nAttempting user seed import...')
+
     try {
       const userSeedsSource = require('./seeds/users.json')
       const userSeedsData: Prisma.UserCreateArgs['data'][] = []
@@ -44,6 +45,70 @@ export default async () => {
     }
   }
 
-  importUsersFromSeed()
-  importSampleNotesForEachUser()
+  const importRates = () => {
+    console.info('\nAttempting to import default rates...')
+
+    try {
+      const src = require('./seeds/rates.json')
+      const data = []
+
+      for (let i = 0; i < src.length; i++) {
+        data.push({
+          value: parseInt(src[i].value),
+          currency: src[i].currency,
+          type: src[i].type,
+          material: src[i].material,
+          modifiers: src[i].modifiers,
+          unit: src[i].unit,
+          description: src[i].description,
+          ownerId: parseInt(src[i].userId),
+        })
+      }
+
+      Promise.all(
+        data.map(async (data: Prisma.ServiceRateCreateArgs['data']) => {
+          const record = await db.serviceRate.create({ data })
+          console.log('ServiceRate [' + record.id + '] imported')
+        })
+      )
+    } catch (error) {
+      console.warn('Please define your rate data.')
+      console.error(error)
+    }
+  }
+
+  const importNotes = () => {
+    console.info('\nAttempting to import default rates...')
+
+    try {
+      const src = require('./seeds/rates.json')
+      const data = []
+
+      for (let i = 0; i < src.length; i++) {
+        data.push({
+          value: parseInt(src[i].value),
+          currency: src[i].currency,
+          type: src[i].type,
+          material: src[i].material,
+          modifiers: src[i].modifiers,
+          unit: src[i].unit,
+          description: src[i].description,
+          ownerId: parseInt(src[i].userId),
+        })
+      }
+
+      Promise.all(
+        data.map(async (data: Prisma.ServiceRateCreateArgs['data']) => {
+          const record = await db.serviceRate.create({ data })
+          console.log('ServiceRate [' + record.id + '] imported')
+        })
+      )
+    } catch (error) {
+      console.warn('Please define your rate data.')
+      console.error(error)
+    }
+  }
+
+  importUsers()
+  importRates()
 }

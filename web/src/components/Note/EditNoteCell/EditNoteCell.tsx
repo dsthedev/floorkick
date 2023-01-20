@@ -11,7 +11,8 @@ export const QUERY = gql`
   query EditNoteById($id: Int!) {
     note: note(id: $id) {
       id
-      body
+      title
+      content
       authorId
       createdAt
       updatedAt
@@ -22,7 +23,8 @@ const UPDATE_NOTE_MUTATION = gql`
   mutation UpdateNoteMutation($id: Int!, $input: UpdateNoteInput!) {
     updateNote(id: $id, input: $input) {
       id
-      body
+      title
+      content
       authorId
       createdAt
       updatedAt
@@ -32,7 +34,7 @@ const UPDATE_NOTE_MUTATION = gql`
 
 export const Loading = () => <div>Loading...</div>
 
-export const Empty = () => <div>Note not found...</div>
+export const Empty = () => <div>Empty...</div>
 
 export const Failure = ({ error }: CellFailureProps) => (
   <div className="cell-error">{error?.message}</div>
@@ -56,7 +58,9 @@ export const Success = ({ note }: CellSuccessProps<EditNoteById>) => {
   return (
     <div className="segment">
       <header className="segment-header">
-        <h2 className="heading heading-secondary">Edit Note #{note?.id}</h2>
+        <h2 className="heading heading-secondary">
+          Edit Note {note?.id}
+        </h2>
       </header>
       <div className="segment-main">
         <NoteForm note={note} onSave={onSave} error={error} loading={loading} />

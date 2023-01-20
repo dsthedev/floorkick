@@ -4,6 +4,7 @@ import { Link, routes } from '@redwoodjs/router'
 import { useMutation } from '@redwoodjs/web'
 import { toast } from '@redwoodjs/web/toast'
 
+import DownloadAsFile from 'src/components/fn/DownloadAsFile/DownloadAsFile'
 import { QUERY } from 'src/components/User/UsersCell'
 import { timeTag, truncate } from 'src/lib/formatters'
 
@@ -36,57 +37,66 @@ const UsersList = ({ users }: FindUsers) => {
     }
   }
 
+  const exportToJson = (e) => {
+    e.preventDefault()
+    DownloadAsFile({
+      data: JSON.stringify(users),
+      fileName: 'floorkick-users.json',
+      fileType: 'text/json',
+    })
+  }
+
   return (
     <div className="segment table-wrapper-responsive">
       <table className="table">
         <thead>
           <tr>
-            <th>Id</th>
+            {/* <th>Id</th> */}
             <th>Email</th>
-            <th>Hashed password</th>
-            <th>Salt</th>
-            <th>Reset token</th>
-            <th>Reset token expires at</th>
+            {/* <th>Hashed password</th> */}
+            {/* <th>Salt</th> */}
+            {/* <th>Reset token</th> */}
+            {/* <th>Reset token expires at</th> */}
             <th>Name</th>
             <th>Roles</th>
-            <th>Created at</th>
-            <th>Updated at</th>
+            {/* <th>Created at</th>
+            <th>Updated at</th> */}
             <th>&nbsp;</th>
           </tr>
         </thead>
         <tbody>
           {users.map((user) => (
             <tr key={user.id}>
-              <td>{truncate(user.id)}</td>
+              {/* <td>{truncate(user.id)}</td> */}
               <td>{truncate(user.email)}</td>
-              <td>{truncate(user.hashedPassword)}</td>
-              <td>{truncate(user.salt)}</td>
-              <td>{truncate(user.resetToken)}</td>
-              <td>{timeTag(user.resetTokenExpiresAt)}</td>
+              {/* <td>{truncate(user.hashedPassword)}</td> */}
+              {/* <td>{truncate(user.salt)}</td> */}
+              {/* <td>{truncate(user.resetToken)}</td> */}
+              {/* <td>{timeTag(user.resetTokenExpiresAt)}</td> */}
               <td>{truncate(user.name)}</td>
               <td>{truncate(user.roles)}</td>
-              <td>{timeTag(user.createdAt)}</td>
-              <td>{timeTag(user.updatedAt)}</td>
+              {/* <td>{timeTag(user.createdAt)}</td>
+              <td>{timeTag(user.updatedAt)}</td> */}
               <td>
                 <nav className="table-actions">
                   <Link
                     to={routes.user({ id: user.id })}
                     title={'Show user ' + user.id + ' detail'}
-                    className="button button-small"
+                    className="button small"
                   >
                     Show
                   </Link>
                   <Link
                     to={routes.editUser({ id: user.id })}
                     title={'Edit user ' + user.id}
-                    className="button button-small button-blue"
+                    className="button small secondary"
                   >
                     Edit
                   </Link>
                   <button
                     type="button"
                     title={'Delete user ' + user.id}
-                    className="button button-small button-red"
+                    className="button small alert"
                     onClick={() => onDeleteClick(user.id)}
                   >
                     Delete
@@ -97,6 +107,11 @@ const UsersList = ({ users }: FindUsers) => {
           ))}
         </tbody>
       </table>
+      <section className="text-right">
+        <button onClick={exportToJson} className="button tiny warning">
+          Download All as JSON
+        </button>
+      </section>
     </div>
   )
 }

@@ -1,9 +1,10 @@
 export const schema = gql`
   type Note {
     id: Int!
-    body: String!
-    author: User
+    title: String!
+    content: String
     authorId: Int
+    author: User
     createdAt: DateTime!
     updatedAt: DateTime!
   }
@@ -14,12 +15,14 @@ export const schema = gql`
   }
 
   input CreateNoteInput {
-    body: String!
+    title: String!
+    content: String
     authorId: Int
   }
 
   input UpdateNoteInput {
-    body: String
+    title: String
+    content: String
     authorId: Int
   }
 

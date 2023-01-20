@@ -29,7 +29,10 @@ const LoginPage = () => {
   }, [])
 
   const onSubmit = async (data: Record<string, string>) => {
-    const response = await logIn({ username: data.username, password: data.password })
+    const response = await logIn({
+      username: data.username,
+      password: data.password,
+    })
 
     if (response.message) {
       toast(response.message)
@@ -46,7 +49,7 @@ const LoginPage = () => {
 
       <section>
         <Toaster toastOptions={{ className: 'toast', duration: 6000 }} />
-        <div className="scaffold login-container">
+        <div className="scaffold callout large text-center">
           <div className="segment">
             <header className="segment-header">
               {/* <h2 className="heading heading-secondary">Log in</h2> */}
@@ -54,7 +57,7 @@ const LoginPage = () => {
 
             <div className="segment-main">
               <div className="form-wrapper">
-                <Form onSubmit={onSubmit} className="form-wrapper">
+                <Form onSubmit={onSubmit} className="form-wrapper text-left">
                   <Label
                     name="username"
                     className="label"
@@ -108,8 +111,8 @@ const LoginPage = () => {
 
                   <FieldError name="password" className="field-error" />
 
-                  <div className="button-group">
-                    <Submit className="button button-blue">Login</Submit>
+                  <div className="buttongroup">
+                    <Submit className="button xlarge expanded">Login</Submit>
                   </div>
                 </Form>
               </div>

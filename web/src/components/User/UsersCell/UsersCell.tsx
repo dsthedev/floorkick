@@ -26,9 +26,9 @@ export const Loading = () => <div>Loading...</div>
 
 export const Empty = () => {
   return (
-    <div className="text-center">
+    <div className="callout small secondary">
       {'No users yet. '}
-      <Link to={routes.newUser()} className="link">
+      <Link to={routes.newUser()} className="button">
         {'Create one?'}
       </Link>
     </div>

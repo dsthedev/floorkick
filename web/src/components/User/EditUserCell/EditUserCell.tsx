@@ -62,13 +62,16 @@ export const Success = ({ user }: CellSuccessProps<EditUserById>) => {
   }
 
   return (
-    <div className="segment">
+    <>
+      <p>Edit User Feature Not Available</p>
+      {/* <div className="segment">
       <header className="segment-header">
         <h2 className="heading heading-secondary">Edit User {user?.id}</h2>
       </header>
       <div className="segment-main">
         <UserForm user={user} onSave={onSave} error={error} loading={loading} />
       </div>
-    </div>
+    </div> */}
+    </>
   )
 }

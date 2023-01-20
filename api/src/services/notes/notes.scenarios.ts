@@ -3,12 +3,8 @@ import type { ScenarioData } from '@redwoodjs/testing/api'
 
 export const standard = defineScenario<Prisma.NoteCreateArgs>({
   note: {
-    one: {
-      data: { body: 'String9080642', updatedAt: '2023-01-15T00:41:07.763Z' },
-    },
-    two: {
-      data: { body: 'String9532491', updatedAt: '2023-01-15T00:41:07.763Z' },
-    },
+    one: { data: { title: 'String', updatedAt: '2023-01-19T20:40:15.531Z' } },
+    two: { data: { title: 'String', updatedAt: '2023-01-19T20:40:15.531Z' } },
   },
 })
 

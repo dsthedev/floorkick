@@ -32,6 +32,7 @@ export const getCurrentUser = async (session: Decoded) => {
       email: true,
       name: true,
       roles: true,
+      realm: true,
     },
   })
 }

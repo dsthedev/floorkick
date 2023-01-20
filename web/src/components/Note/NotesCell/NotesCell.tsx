@@ -9,7 +9,8 @@ export const QUERY = gql`
   query FindNotes {
     notes {
       id
-      body
+      title
+      content
       authorId
       createdAt
       updatedAt
@@ -21,9 +22,9 @@ export const Loading = () => <div>Loading...</div>
 
 export const Empty = () => {
   return (
-    <div className="text-center">
+    <div className="callout small secondary">
       {'No notes yet. '}
-      <Link to={routes.newNote()} className="link">
+      <Link to={routes.newNote()} className="button">
         {'Create one?'}
       </Link>
     </div>
