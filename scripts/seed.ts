@@ -5,7 +5,10 @@ import CryptoJS from 'crypto-js'
 export default async () => {
   console.warn('\nWARNING: REMOVING ALL USERS & NOTES, THIS IS PERMANENT!')
 
+  await db.note.deleteMany()
+  await db.realm.deleteMany()
   await db.user.deleteMany()
+  await db.serviceRate.deleteMany()
 
   const importUsers = () => {
     console.info('\nAttempting user seed import...')
@@ -49,24 +52,24 @@ export default async () => {
     console.info('\nAttempting to import default rates...')
 
     try {
-      const src = require('./seeds/rates.json')
-      const data = []
+      const seedData = require('./seeds/rates.json')
+      const rateData = []
 
-      for (let i = 0; i < src.length; i++) {
-        data.push({
-          value: parseInt(src[i].value),
-          currency: src[i].currency,
-          type: src[i].type,
-          material: src[i].material,
-          modifiers: src[i].modifiers,
-          unit: src[i].unit,
-          description: src[i].description,
-          ownerId: parseInt(src[i].userId),
+      for (let i = 0; i < seedData.length; i++) {
+        rateData.push({
+          value: parseInt(seedData[i].value),
+          currency: seedData[i].currency,
+          type: seedData[i].type,
+          material: seedData[i].material,
+          modifiers: seedData[i].modifiers,
+          unit: seedData[i].unit,
+          description: seedData[i].description,
+          ownerId: parseInt(seedData[i].userId),
         })
       }
 
       Promise.all(
-        data.map(async (data: Prisma.ServiceRateCreateArgs['data']) => {
+        rateData.map(async (data) => {
           const record = await db.serviceRate.create({ data })
           console.log('ServiceRate [' + record.id + '] imported')
         })

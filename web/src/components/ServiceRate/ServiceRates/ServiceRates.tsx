@@ -1,3 +1,5 @@
+import { useState, useEffect } from 'react'
+
 import type {
   DeleteServiceRateMutationVariables,
   FindServiceRates,
@@ -10,7 +12,7 @@ import { toast } from '@redwoodjs/web/toast'
 import DisplayCurrency from 'src/components/fn/DisplayCurrency/DisplayCurrency'
 import DownloadAsFile from 'src/components/fn/DownloadAsFile/DownloadAsFile'
 import { QUERY } from 'src/components/ServiceRate/ServiceRatesCell'
-import { timeTag, truncate } from 'src/lib/formatters'
+import { truncate } from 'src/lib/formatters'
 
 const DELETE_SERVICE_RATE_MUTATION = gql`
   mutation DeleteServiceRateMutation($id: Int!) {
@@ -21,9 +23,12 @@ const DELETE_SERVICE_RATE_MUTATION = gql`
 `
 
 const ServiceRatesList = ({ serviceRates }: FindServiceRates) => {
+  const [search, setSearch] = React.useState('')
+  const [results, setResults] = React.useState([])
+
   const [deleteServiceRate] = useMutation(DELETE_SERVICE_RATE_MUTATION, {
     onCompleted: () => {
-      toast.success('ServiceRate deleted')
+      toast.success('Rate Deleted')
     },
     onError: (error) => {
       toast.error(error.message)
@@ -36,7 +41,7 @@ const ServiceRatesList = ({ serviceRates }: FindServiceRates) => {
   })
 
   const onDeleteClick = (id: DeleteServiceRateMutationVariables['id']) => {
-    if (confirm('Are you sure you want to delete serviceRate ' + id + '?')) {
+    if (confirm('Are you sure you want to delete rate: ' + id + '?')) {
       deleteServiceRate({ variables: { id } })
     }
   }
@@ -50,8 +55,36 @@ const ServiceRatesList = ({ serviceRates }: FindServiceRates) => {
     })
   }
 
+  useEffect(() => {
+    let searchResults
+    if (search) {
+      searchResults = serviceRates.filter((i) =>
+        i.material.toLowerCase().includes(search.toLowerCase())
+      )
+    } else {
+      searchResults = serviceRates
+    }
+    setResults(searchResults)
+  }, [search, serviceRates])
+
+  const handleInput = (e) => {
+    setSearch(e.target.value)
+  }
+
   return (
     <div className="segment table-wrapper-responsive">
+      <div className="input-group">
+        <div className="input-group-label">{'Filter'}</div>
+        <div className="input-group-field">
+          <input
+            type="text"
+            value={search}
+            onChange={(e) => handleInput(e)}
+            placeholder="Carpet, LVT, Trim..."
+          />
+        </div>
+      </div>
+
       <table className="table">
         <thead>
           <tr>
@@ -72,7 +105,7 @@ const ServiceRatesList = ({ serviceRates }: FindServiceRates) => {
           </tr>
         </thead>
         <tbody>
-          {serviceRates.map((serviceRate) => (
+          {results.map((serviceRate) => (
             <tr key={serviceRate.id}>
               {/* <td>{truncate(serviceRate.id)}</td> */}
               {/* <td>{truncate(serviceRate.uuid)}</td> */}

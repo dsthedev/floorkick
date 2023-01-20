@@ -2,6 +2,8 @@
 
 ## 2023.01.19
 
+- added a simple realtime filter on results for rates (material only for now)
+
 - push v1!
 - adds realms for addresses (wip)
 - adds servicerate from before
