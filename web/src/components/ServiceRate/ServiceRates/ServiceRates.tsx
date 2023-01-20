@@ -73,8 +73,9 @@ const ServiceRatesList = ({ serviceRates }: FindServiceRates) => {
 
   return (
     <div className="segment table-wrapper-responsive">
+      <h2>My Rates</h2>
       <div className="input-group">
-        <div className="input-group-label">{'Filter'}</div>
+        <div className="input-group-label secondary">{'Filter'}</div>
         <div className="input-group-field">
           <input
             type="text"

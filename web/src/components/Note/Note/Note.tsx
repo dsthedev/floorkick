@@ -39,7 +39,10 @@ const Note = ({ note }: Props) => {
     <>
       <div className="segment">
         <header className="segment-header">
-          <h2 className="heading heading-secondary">Note {note.id} Detail</h2>
+          <h2 className="heading heading-secondary">
+            <span className="subheader">{'Note # '}</span>
+            {note.id}
+          </h2>
         </header>
         <table className="table">
           <tbody>

@@ -71,7 +71,7 @@ export const Success = ({ realm }: CellSuccessProps<EditRealmById>) => {
   return (
     <div className="segment">
       <header className="segment-header">
-        <h2 className="heading heading-secondary">Edit Realm {realm?.id}</h2>
+        <h2 className="heading heading-secondary">{realm?.title}</h2>
       </header>
       <div className="segment-main">
         <RealmForm

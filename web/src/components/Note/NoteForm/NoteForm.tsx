@@ -42,7 +42,7 @@ const NoteForm = (props: NoteFormProps) => {
         <div className="input-group">
           <Label
             name="title"
-            className="label"
+            className="label secondary"
             errorClassName="label label-error"
           >
             Title
@@ -61,7 +61,7 @@ const NoteForm = (props: NoteFormProps) => {
 
         <Label
           name="content"
-          className="label"
+          className="label secondary"
           errorClassName="label label-error"
         >
           Content
@@ -97,7 +97,7 @@ const NoteForm = (props: NoteFormProps) => {
         </div>
 
         <div className="buttongroup">
-          <Submit disabled={props.loading} className="button secondary">
+          <Submit disabled={props.loading} className="button large expanded">
             Save
           </Submit>
         </div>

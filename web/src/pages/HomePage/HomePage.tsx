@@ -44,7 +44,7 @@ const HomePage = () => {
                   <>
                     <div className="cell small-6">
                       <Link
-                        className="button tiny warning expanded"
+                        className="button tiny alert expanded"
                         to={routes.users()}
                       >
                         Users
@@ -52,7 +52,7 @@ const HomePage = () => {
                     </div>
                     <div className="cell small-6">
                       <Link
-                        className="button tiny hollow expanded"
+                        className="button tiny warning expanded"
                         to={routes.realms()}
                       >
                         Realms

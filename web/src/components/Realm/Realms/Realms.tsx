@@ -48,6 +48,7 @@ const RealmsList = ({ realms }: FindRealms) => {
 
   return (
     <div className="segment table-wrapper-responsive">
+      <h2>My Addresses</h2>
       <table className="table">
         <thead>
           <tr>

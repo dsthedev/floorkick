@@ -43,7 +43,7 @@ const UserForm = (props: UserFormProps) => {
 
         <Label
           name="email"
-          className="label"
+          className="label secondary"
           errorClassName="label label-error"
         >
           Email
@@ -61,7 +61,7 @@ const UserForm = (props: UserFormProps) => {
 
         <Label
           name="hashedPassword"
-          className="label"
+          className="label secondary"
           errorClassName="label label-error"
         >
           Hashed password
@@ -77,7 +77,11 @@ const UserForm = (props: UserFormProps) => {
 
         <FieldError name="hashedPassword" className="form-error" />
 
-        <Label name="salt" className="label" errorClassName="label label-error">
+        <Label
+          name="salt"
+          className="label secondary"
+          errorClassName="label label-error"
+        >
           Salt
         </Label>
 
@@ -93,7 +97,7 @@ const UserForm = (props: UserFormProps) => {
 
         <Label
           name="resetToken"
-          className="label"
+          className="label secondary"
           errorClassName="label label-error"
         >
           Reset token
@@ -110,7 +114,7 @@ const UserForm = (props: UserFormProps) => {
 
         <Label
           name="resetTokenExpiresAt"
-          className="label"
+          className="label secondary"
           errorClassName="label label-error"
         >
           Reset token expires at
@@ -125,7 +129,11 @@ const UserForm = (props: UserFormProps) => {
 
         <FieldError name="resetTokenExpiresAt" className="form-error" />
 
-        <Label name="name" className="label" errorClassName="label label-error">
+        <Label
+          name="name"
+          className="label secondary"
+          errorClassName="label label-error"
+        >
           Name
         </Label>
 
@@ -141,7 +149,7 @@ const UserForm = (props: UserFormProps) => {
 
         <Label
           name="roles"
-          className="label"
+          className="label secondary"
           errorClassName="label label-error"
         >
           Roles
@@ -158,7 +166,7 @@ const UserForm = (props: UserFormProps) => {
         <FieldError name="roles" className="form-error" />
 
         <div className="buttongroup">
-          <Submit disabled={props.loading} className="button secondary">
+          <Submit disabled={props.loading} className="button large expanded">
             Save
           </Submit>
         </div>

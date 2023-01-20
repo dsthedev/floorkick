@@ -40,7 +40,7 @@ const RealmForm = (props: RealmFormProps) => {
 
         <Label
           name="title"
-          className="label"
+          className="label secondary"
           errorClassName="label label-error"
         >
           Title
@@ -58,7 +58,7 @@ const RealmForm = (props: RealmFormProps) => {
 
         <Label
           name="address"
-          className="label"
+          className="label secondary"
           errorClassName="label label-error"
         >
           Address
@@ -73,7 +73,7 @@ const RealmForm = (props: RealmFormProps) => {
 
         <FieldError name="address" className="form-error" />
 
-        <Label name="city" className="label" errorClassName="label label-error">
+        <Label name="city" className="label secondary" errorClassName="label label-error">
           City
         </Label>
 
@@ -88,7 +88,7 @@ const RealmForm = (props: RealmFormProps) => {
 
         <Label
           name="state"
-          className="label"
+          className="label secondary"
           errorClassName="label label-error"
         >
           State
@@ -103,7 +103,7 @@ const RealmForm = (props: RealmFormProps) => {
 
         <FieldError name="state" className="form-error" />
 
-        <Label name="zip" className="label" errorClassName="label label-error">
+        <Label name="zip" className="label secondary" errorClassName="label label-error">
           Zip
         </Label>
 
@@ -116,51 +116,64 @@ const RealmForm = (props: RealmFormProps) => {
 
         <FieldError name="zip" className="form-error" />
 
-        <Label name="lat" className="label" errorClassName="label label-error">
-          Lat
-        </Label>
+        <div className="input-field-group hide">
+          <Label
+            name="lat"
+            className="label secondary"
+            errorClassName="label label-error"
+          >
+            Lat
+          </Label>
 
-        <TextField
-          name="lat"
-          defaultValue={props.realm?.lat}
-          className="input"
-          errorClassName="input input-error"
-        />
+          <TextField
+            name="lat"
+            defaultValue={props.realm?.lat}
+            className="input"
+            errorClassName="input input-error"
+            readOnly
+          />
 
-        <FieldError name="lat" className="form-error" />
+          <FieldError name="lat" className="form-error" />
 
-        <Label name="long" className="label" errorClassName="label label-error">
-          Long
-        </Label>
+          <Label
+            name="long"
+            className="label secondary"
+            errorClassName="label label-error"
+          >
+            Long
+          </Label>
 
-        <TextField
-          name="long"
-          defaultValue={props.realm?.long}
-          className="input"
-          errorClassName="input input-error"
-        />
+          <TextField
+            name="long"
+            defaultValue={props.realm?.long}
+            className="input"
+            errorClassName="input input-error"
+            readOnly
+          />
 
-        <FieldError name="long" className="form-error" />
+          <FieldError name="long" className="form-error" />
 
-        <Label
-          name="ownerId"
-          className="label visually-hidden"
-          errorClassName="label label-error"
-        >
-          Owner id
-        </Label>
+          <Label
+            name="ownerId"
+            className="label secondary"
+            errorClassName="label label-error"
+          >
+            Owner id
+          </Label>
 
-        <NumberField
-          name="ownerId"
-          defaultValue={props.realm ? props.realm.ownerId : currentUser.id}
-          className="input visually-hidden"
-          errorClassName="input input-error"
-        />
+          <NumberField
+            name="ownerId"
+            defaultValue={props.realm ? props.realm.ownerId : currentUser.id}
+            className="input"
+            errorClassName="input input-error"
+            readOnly
+          />
 
-        <FieldError name="ownerId" className="form-error" />
+          <FieldError name="ownerId" className="form-error" />
+        </div>
 
         <div className="buttongroup">
-          <Submit disabled={props.loading} className="button secondary">
+          <Submit disabled={props.loading} className="button large expanded">
             Save
           </Submit>
         </div>

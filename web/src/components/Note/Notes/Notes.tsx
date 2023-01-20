@@ -48,6 +48,7 @@ const NotesList = ({ notes }: FindNotes) => {
 
   return (
     <div className="segment table-wrapper-responsive">
+      <h2>My Notes</h2>
       <table className="table">
         <thead>
           <tr>

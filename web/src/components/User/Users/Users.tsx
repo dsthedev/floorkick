@@ -48,6 +48,7 @@ const UsersList = ({ users }: FindUsers) => {
 
   return (
     <div className="segment table-wrapper-responsive">
+      <h2>Users</h2>
       <table className="table">
         <thead>
           <tr>

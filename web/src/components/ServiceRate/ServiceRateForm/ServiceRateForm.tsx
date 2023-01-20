@@ -31,7 +31,7 @@ const ServiceRateForm = (props: ServiceRateFormProps) => {
   const { currentUser } = useAuth()
 
   const [currencyDisplay, setCurrencyDisplay] = useState(
-    props.serviceRate?.value
+    props.serviceRate?.value.toString()
   )
   const uuidValue = props.serviceRate ? props.serviceRate.uuid : uuidv4()
 
@@ -44,12 +44,12 @@ const ServiceRateForm = (props: ServiceRateFormProps) => {
       <Form<FormServiceRate> onSubmit={onSubmit} error={props.error}>
         <FormError
           error={props.error}
-          wrapperClassName="form-error-wrapper"
-          titleClassName="form-error-title"
-          listClassName="form-error-list"
+          wrapperClassName="form-error wrapper"
+          titleClassName="form-error title"
+          listClassName="form-error list"
         />
 
-        <div className="input-group visually-hidden">
+        <div className="input-group hide">
           <Label
             name="uuid"
             className="label secondary"
@@ -61,16 +61,16 @@ const ServiceRateForm = (props: ServiceRateFormProps) => {
           <TextField
             name="uuid"
             defaultValue={uuidValue}
-            className="input visually-hidden"
+            className="input"
             errorClassName="input input-error"
             validation={{ required: true }}
-            disabled
+            readonly
           />
 
           <FieldError name="uuid" className="form-error" />
         </div>
 
-        <div className="input-group visually-hidden">
+        <div className="input-group hide">
           <Label
             name="name"
             className="label secondary"
@@ -82,12 +82,12 @@ const ServiceRateForm = (props: ServiceRateFormProps) => {
           <TextField
             name="name"
             defaultValue={props.serviceRate?.name}
-            className="input visually-hidden"
+            className="input"
             errorClassName="input input-error"
-            disabled
+            readonly
           />
 
-          <FieldError name="name" className="form-error visually-hidden" />
+          <FieldError name="name" className="form-error" />
         </div>
 
         <div className="input-group">
@@ -99,7 +99,7 @@ const ServiceRateForm = (props: ServiceRateFormProps) => {
             <h6>Rate</h6>
           </Label>
 
-          <span className="input-group-label">
+          <span className="input-group-label secondary">
             {DisplayCurrency(currencyDisplay, props.serviceRate?.currency)}
           </span>
 
@@ -110,7 +110,7 @@ const ServiceRateForm = (props: ServiceRateFormProps) => {
             className="input"
             errorClassName="input input-error"
             validation={{ required: true }}
-            onChange={(e) => setCurrencyDisplay(e.target.value)}
+            onChange={(e) => setCurrencyDisplay(e.target.value.toString())}
           />
 
           <FieldError name="value" className="form-error" />
@@ -135,7 +135,7 @@ const ServiceRateForm = (props: ServiceRateFormProps) => {
           <FieldError name="unit" className="form-error" />
         </div>
 
-        <div className="input-group visually-hidden">
+        <div className="input-group hide">
           <Label
             name="currency"
             className="label secondary"
@@ -153,7 +153,9 @@ const ServiceRateForm = (props: ServiceRateFormProps) => {
 
           <FieldError name="currency" className="form-error" />
         </div>
+
         <hr />
+
         <div className="input-group">
           <Label
             name="type"
@@ -235,10 +237,10 @@ const ServiceRateForm = (props: ServiceRateFormProps) => {
           <FieldError name="description" className="form-error" />
         </div>
 
-        <div className="input-group">
+        <div className="input-group hide">
           <Label
             name="ownerId"
-            className="label secondary visually-hidden"
+            className="label secondary"
             errorClassName="label alert label-error"
           >
             <h6>Owner</h6>
@@ -249,8 +251,9 @@ const ServiceRateForm = (props: ServiceRateFormProps) => {
             defaultValue={
               props.serviceRate ? props.serviceRate.ownerId : currentUser.id
             }
-            className="input visually-hidden"
+            className="input"
             errorClassName="input input-error"
+            readonly
           />
 
           <FieldError name="ownerId" className="form-error" />

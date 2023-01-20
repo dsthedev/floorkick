@@ -59,7 +59,8 @@ export const Success = ({ note }: CellSuccessProps<EditNoteById>) => {
     <div className="segment">
       <header className="segment-header">
         <h2 className="heading heading-secondary">
-          Edit Note {note?.id}
+          <span className="subheader">Edit Note #</span>
+          {note?.id}
         </h2>
       </header>
       <div className="segment-main">

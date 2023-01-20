@@ -64,7 +64,7 @@ export const Success = ({
     UPDATE_SERVICE_RATE_MUTATION,
     {
       onCompleted: () => {
-        toast.success('ServiceRate updated')
+        toast.success('Rate updated')
         navigate(routes.serviceRates())
       },
       onError: (error) => {

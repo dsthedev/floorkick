@@ -35,7 +35,7 @@ const Default = ({
       <div className="scaffold">
         <Toaster toastOptions={{ className: 'toast', duration: 6000 }} />
 
-        <header className="grid-x">
+        <header className="grid-xy">
           <nav
             aria-label="You are here:"
             role="navigation"
@@ -56,6 +56,7 @@ const Default = ({
                 false
               )}
             </ul>
+            <hr />
           </nav>
 
           {isAuthenticated && !isHomePage ? (
@@ -75,9 +76,15 @@ const Default = ({
           {isAuthenticated ? (
             <>
               <nav className="cell">
+                <hr />
                 <ul className="menu horizontal">
                   <li className="menu-text">
                     {currentUser ? currentUser.name : ' Guest'}
+                  </li>
+                  <li className="menu-item">
+                    <Link className="button tiny" to={routes.home()}>
+                      Home
+                    </Link>
                   </li>
                   <li className="menu-item">
                     <LoginOrOutLink loggedInClass={''} loggedOutClass={''} />
