@@ -9,13 +9,14 @@ export const QUERY = gql`
   query FindUsers {
     users {
       id
-      email
+      handle
       hashedPassword
       salt
       resetToken
       resetTokenExpiresAt
-      name
       roles
+      email
+      firstName
       createdAt
       updatedAt
     }
@@ -26,9 +27,12 @@ export const Loading = () => <div>Loading...</div>
 
 export const Empty = () => {
   return (
-    <div className="callout small secondary">
+    <div className="rw-text-center">
       {'No users yet. '}
-      <Link to={routes.newUser()} className="button">
+      <Link
+        to={routes.newUser()}
+        className="rw-link"
+      >
         {'Create one?'}
       </Link>
     </div>
@@ -36,7 +40,7 @@ export const Empty = () => {
 }
 
 export const Failure = ({ error }: CellFailureProps) => (
-  <div className="cell-error">{error?.message}</div>
+  <div className="rw-cell-error">{error?.message}</div>
 )
 
 export const Success = ({ users }: CellSuccessProps<FindUsers>) => {

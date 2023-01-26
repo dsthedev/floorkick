@@ -79,7 +79,7 @@ const Default = ({
                 <hr />
                 <ul className="menu horizontal">
                   <li className="menu-text">
-                    {currentUser ? currentUser.name : ' Guest'}
+                    {currentUser ? currentUser.firstName : ' Guest'}
                   </li>
                   <li className="menu-item">
                     <Link className="button tiny" to={routes.home()}>
@@ -92,7 +92,14 @@ const Default = ({
                 </ul>
               </nav>
               <div className="cell text-right">
-                &copy; <a href="https://www.darrensopiarz.com/">d11z</a>
+                &copy;{' '}
+                <a
+                  href="https://www.darrensopiarz.com/"
+                  target={'_blank'}
+                  rel="noreferrer"
+                >
+                  d11z
+                </a>
               </div>
             </>
           ) : (

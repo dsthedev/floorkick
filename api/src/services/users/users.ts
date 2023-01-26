@@ -36,13 +36,7 @@ export const deleteUser: MutationResolvers['deleteUser'] = ({ id }) => {
 }
 
 export const User: UserRelationResolvers = {
-  notes: (_obj, { root }) => {
-    return db.user.findUnique({ where: { id: root?.id } }).notes()
-  },
-  realm: (_obj, { root }) => {
-    return db.user.findUnique({ where: { id: root?.id } }).realm()
-  },
-  ServiceRate: (_obj, { root }) => {
-    return db.user.findUnique({ where: { id: root?.id } }).ServiceRate()
+  rates: (_obj, { root }) => {
+    return db.user.findUnique({ where: { id: root?.id } }).rates()
   },
 }

@@ -2,6 +2,11 @@
 
 ## 2023.01.19
 
+- big reset to only user + reset
+- clever solution to searching all fields on search results by concatgi
+
+## 2023.01.19
+
 - added a simple realtime filter on results for rates (material only for now)
 
 - push v1!

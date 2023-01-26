@@ -1,50 +1,42 @@
 export const schema = gql`
   type ServiceRate {
     id: Int!
-    uuid: String!
-    name: String
     value: Int!
-    currency: String
     unit: String!
-    type: String!
+    task: String!
     material: String!
     modifiers: String
     description: String
-    ownerId: Int
-    owner: User
+    authorId: Int
+    author: User
     createdAt: DateTime!
     updatedAt: DateTime!
   }
 
   type Query {
     serviceRates: [ServiceRate!]! @requireAuth
+    myServiceRates: [ServiceRate!]! @requireAuth
     serviceRate(id: Int!): ServiceRate @requireAuth
   }
 
   input CreateServiceRateInput {
-    uuid: String!
-    name: String
     value: Int!
-    currency: String
     unit: String!
-    type: String!
+    task: String!
     material: String!
     modifiers: String
     description: String
-    ownerId: Int
+    authorId: Int
   }
 
   input UpdateServiceRateInput {
-    uuid: String
-    name: String
     value: Int
-    currency: String
     unit: String
-    type: String
+    task: String
     material: String
     modifiers: String
     description: String
-    ownerId: Int
+    authorId: Int
   }
 
   type Mutation {

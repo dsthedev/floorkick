@@ -1,10 +1,11 @@
-import type { DeleteUserMutationVariables, FindUserById } from 'types/graphql'
 
 import { Link, routes, navigate } from '@redwoodjs/router'
 import { useMutation } from '@redwoodjs/web'
 import { toast } from '@redwoodjs/web/toast'
 
-import { timeTag } from 'src/lib/formatters'
+import { timeTag,  } from 'src/lib/formatters'
+
+import type { DeleteUserMutationVariables, FindUserById } from 'types/graphql'
 
 const DELETE_USER_MUTATION = gql`
   mutation DeleteUserMutation($id: Int!) {
@@ -37,65 +38,61 @@ const User = ({ user }: Props) => {
 
   return (
     <>
-      <div className="segment">
-        <header className="segment-header">
-          <h2 className="heading heading-secondary">User {user.id} Detail</h2>
+      <div className="rw-segment">
+        <header className="rw-segment-header">
+          <h2 className="rw-heading rw-heading-secondary">
+            User {user.id} Detail
+          </h2>
         </header>
-        <table className="table">
+        <table className="rw-table">
           <tbody>
-            {/* <tr>
+            <tr>
               <th>Id</th>
               <td>{user.id}</td>
-            </tr> */}
-            <tr>
-              <th>Email</th>
-              <td>{user.email}</td>
-            </tr>
-            {/* <tr>
+            </tr><tr>
+              <th>Handle</th>
+              <td>{user.handle}</td>
+            </tr><tr>
               <th>Hashed password</th>
               <td>{user.hashedPassword}</td>
-            </tr>
-            <tr>
+            </tr><tr>
               <th>Salt</th>
               <td>{user.salt}</td>
-            </tr>
-            <tr>
+            </tr><tr>
               <th>Reset token</th>
               <td>{user.resetToken}</td>
-            </tr>
-            <tr>
+            </tr><tr>
               <th>Reset token expires at</th>
               <td>{timeTag(user.resetTokenExpiresAt)}</td>
-            </tr> */}
-            <tr>
-              <th>Name</th>
-              <td>{user.name}</td>
-            </tr>
-            <tr>
+            </tr><tr>
               <th>Roles</th>
               <td>{user.roles}</td>
-            </tr>
-            {/* <tr>
+            </tr><tr>
+              <th>Email</th>
+              <td>{user.email}</td>
+            </tr><tr>
+              <th>First name</th>
+              <td>{user.firstName}</td>
+            </tr><tr>
               <th>Created at</th>
               <td>{timeTag(user.createdAt)}</td>
-            </tr>
-            <tr>
+            </tr><tr>
               <th>Updated at</th>
               <td>{timeTag(user.updatedAt)}</td>
-            </tr> */}
+            </tr>
           </tbody>
         </table>
       </div>
-      <nav className="buttongroup">
+      <nav className="rw-button-group">
         <Link
           to={routes.editUser({ id: user.id })}
-          className="button secondary visually-hidden"
+          className="rw-button rw-button-blue"
         >
           Edit
         </Link>
         <button
           type="button"
-          className="button alert"
+          className="rw-button rw-button-red"
           onClick={() => onDeleteClick(user.id)}
         >
           Delete

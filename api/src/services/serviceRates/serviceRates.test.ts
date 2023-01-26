@@ -33,10 +33,10 @@ describe('serviceRates', () => {
 
   scenario('creates a serviceRate', async () => {
     const result = await createServiceRate({
-      input: { updatedAt: '2023-01-19T20:40:44.595Z' },
+      input: { updatedAt: '2023-01-26T03:01:55.251Z' },
     })
 
-    expect(result.updatedAt).toEqual(new Date('2023-01-19T20:40:44.595Z'))
+    expect(result.updatedAt).toEqual(new Date('2023-01-26T03:01:55.251Z'))
   })
 
   scenario('updates a serviceRate', async (scenario: StandardScenario) => {
@@ -45,10 +45,10 @@ describe('serviceRates', () => {
     })) as ServiceRate
     const result = await updateServiceRate({
       id: original.id,
-      input: { updatedAt: '2023-01-20T20:40:44.595Z' },
+      input: { updatedAt: '2023-01-27T03:01:55.252Z' },
     })
 
-    expect(result.updatedAt).toEqual(new Date('2023-01-20T20:40:44.595Z'))
+    expect(result.updatedAt).toEqual(new Date('2023-01-27T03:01:55.252Z'))
   })
 
   scenario('deletes a serviceRate', async (scenario: StandardScenario) => {

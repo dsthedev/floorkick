@@ -9,6 +9,10 @@ generator client {
   binaryTargets = "native"
 }
 
+// https://www.prisma.io/docs/concepts/components/prisma-schema/data-model#defining-a-unique-field
+// https://www.prisma.io/docs/reference/api-reference/prisma-schema-reference#unique-1
+// https://www.prisma.io/docs/reference/api-reference/command-reference#format
+
 // yarn rw g scaffold user;
 // yarn rw g scaffold note;
 // yarn rw g scaffold realm;
@@ -17,85 +21,79 @@ generator client {
 model User {
   id Int @id @unique @default(autoincrement())
 
-  email               String    @unique
+  handle              String    @unique
   hashedPassword      String    @default("")
   salt                String    @default("")
   resetToken          String?
   resetTokenExpiresAt DateTime?
 
-  name  String @default("") // admin,editor
-  roles String @default("guest") // admin,editor
+  roles String @default("guest") // developer,installer
+
+  email     String?
+  firstName String?
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  notes Note[]
-  realm Realm[]
-
-  // rates     ServiceRate[]
-  // jobs      JobSheet[]
-  // stubs     PayStub[]
-  ServiceRate ServiceRate[]
-}
-
-model Note {
-  id      Int     @id @default(autoincrement())
-  title   String
-  content String?
-
-  authorId Int?  @default(1)
-  author   User? @relation(fields: [authorId], references: [id])
-
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-
-  @@unique([authorId, id])
-}
-
-model Realm {
-  id    Int    @id @default(autoincrement())
-  title String
-
-  address String?
-  city    String?
-  state   String?
-  zip     Int?
-
-  lat  String?
-  long String?
-
-  ownerId Int?  @default(1)
-  owner   User? @relation(fields: [ownerId], references: [id])
-
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-
-  @@unique([ownerId, id])
+  rates ServiceRate[]
 }
 
 model ServiceRate {
-  id   Int    @id @unique @default(autoincrement())
-  uuid String @default(uuid())
+  id Int @id @default(autoincrement())
 
-  name String? // [value] [dollars] [unit] to [type] [material] with [modifiers]
+  // uuid String @default(uuid())
 
   value     Int     @default(0) // 2/9.50
-  currency  String? @default("USD") // dollars
   unit      String  @default("") // per SqFt,yard
-  type      String  @default("") // to remove/install
+  task      String  @default("") // to remove/install
   material  String  @default("") // LVT/carpet
   modifiers String? // pattern,softback
 
   description String? // further specificy with comments here
 
-  ownerId Int?  @default(1)
-  owner   User? @relation(fields: [ownerId], references: [id])
+  authorId Int?  @default(1)
+  author   User? @relation(fields: [authorId], references: [id])
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt()
 
-  @@unique([ownerId, id])
+  @@unique([authorId, id])
 }
+
+// model Note {
+//   id      Int     @id @default(autoincrement())
+//   title   String
+//   content String?
+
+//   authorId Int?  @default(1)
+//   author   User? @relation(fields: [authorId], references: [id])
+
+//   createdAt DateTime @default(now())
+//   updatedAt DateTime @updatedAt
+
+//   @@unique([authorId, id])
+// }
+
+// model Realm {
+//   id    Int    @id @default(autoincrement())
+//   title String
+
+//   address String?
+//   city    String?
+//   state   String?
+//   zip     Int?
+
+//   lat  String?
+//   long String?
+
+//   ownerId Int?  @default(1)
+//   owner   User? @relation(fields: [ownerId], references: [id])
+
+//   createdAt DateTime @default(now())
+//   updatedAt DateTime @updatedAt
+
+//   @@unique([ownerId, id])
+// }
 
 // model JobSheet {
 //   id    Int     @id @default(autoincrement())

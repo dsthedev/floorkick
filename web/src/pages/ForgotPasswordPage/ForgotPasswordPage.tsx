@@ -40,31 +40,31 @@ const ForgotPasswordPage = () => {
     <>
       <MetaTags title="Forgot Password" />
 
-      <section>
-        <Toaster toastOptions={{ className: 'toast', duration: 6000 }} />
-        <div className="scaffold login-container">
-          <div className="segment">
-            <header className="segment-header">
-              <h2 className="heading heading-secondary">
+      <main className="rw-main">
+        <Toaster toastOptions={{ className: 'rw-toast', duration: 6000 }} />
+        <div className="rw-scaffold rw-login-container">
+          <div className="rw-segment">
+            <header className="rw-segment-header">
+              <h2 className="rw-heading rw-heading-secondary">
                 Forgot Password
               </h2>
             </header>
 
-            <div className="segment-main">
-              <div className="form-wrapper">
-                <Form onSubmit={onSubmit} className="form-wrapper">
+            <div className="rw-segment-main">
+              <div className="rw-form-wrapper">
+                <Form onSubmit={onSubmit} className="rw-form-wrapper">
                   <div className="text-left">
                     <Label
                       name="username"
-                      className="label"
-                      errorClassName="label label-error"
+                      className="rw-label"
+                      errorClassName="rw-label rw-label-error"
                     >
                       Username
                     </Label>
                     <TextField
                       name="username"
-                      className="input"
-                      errorClassName="input input-error"
+                      className="rw-input"
+                      errorClassName="rw-input rw-input-error"
                       ref={usernameRef}
                       validation={{
                         required: {
@@ -74,18 +74,18 @@ const ForgotPasswordPage = () => {
                       }}
                     />
 
-                    <FieldError name="username" className="field-error" />
+                    <FieldError name="username" className="rw-field-error" />
                   </div>
 
-                  <div className="button-group">
-                    <Submit className="button button-blue">Submit</Submit>
+                  <div className="rw-button-group">
+                    <Submit className="rw-button rw-button-blue">Submit</Submit>
                   </div>
                 </Form>
               </div>
             </div>
           </div>
         </div>
-      </section>
+      </main>
     </>
   )
 }

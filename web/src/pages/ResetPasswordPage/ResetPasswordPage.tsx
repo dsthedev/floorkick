@@ -60,32 +60,32 @@ const ResetPasswordPage = ({ resetToken }: { resetToken: string }) => {
     <>
       <MetaTags title="Reset Password" />
 
-      <section>
-        <Toaster toastOptions={{ className: 'toast', duration: 6000 }} />
-        <div className="scaffold login-container">
-          <div className="segment">
-            <header className="segment-header">
-              <h2 className="heading heading-secondary">
+      <main className="rw-main">
+        <Toaster toastOptions={{ className: 'rw-toast', duration: 6000 }} />
+        <div className="rw-scaffold rw-login-container">
+          <div className="rw-segment">
+            <header className="rw-segment-header">
+              <h2 className="rw-heading rw-heading-secondary">
                 Reset Password
               </h2>
             </header>
 
-            <div className="segment-main">
-              <div className="form-wrapper">
-                <Form onSubmit={onSubmit} className="form-wrapper">
+            <div className="rw-segment-main">
+              <div className="rw-form-wrapper">
+                <Form onSubmit={onSubmit} className="rw-form-wrapper">
                   <div className="text-left">
                     <Label
                       name="password"
-                      className="label"
-                      errorClassName="label label-error"
+                      className="rw-label"
+                      errorClassName="rw-label rw-label-error"
                     >
                       New Password
                     </Label>
                     <PasswordField
                       name="password"
                       autoComplete="new-password"
-                      className="input"
-                      errorClassName="input input-error"
+                      className="rw-input"
+                      errorClassName="rw-input rw-input-error"
                       disabled={!enabled}
                       ref={passwordRef}
                       validation={{
@@ -96,12 +96,12 @@ const ResetPasswordPage = ({ resetToken }: { resetToken: string }) => {
                       }}
                     />
 
-                    <FieldError name="password" className="field-error" />
+                    <FieldError name="password" className="rw-field-error" />
                   </div>
 
-                  <div className="button-group">
+                  <div className="rw-button-group">
                     <Submit
-                      className="button button-blue"
+                      className="rw-button rw-button-blue"
                       disabled={!enabled}
                     >
                       Submit
@@ -112,7 +112,7 @@ const ResetPasswordPage = ({ resetToken }: { resetToken: string }) => {
             </div>
           </div>
         </div>
-      </section>
+      </main>
     </>
   )
 }

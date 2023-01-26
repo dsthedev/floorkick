@@ -1,5 +1,3 @@
-import type { EditUserById, UpdateUserInput } from 'types/graphql'
-
 import {
   Form,
   FormError,
@@ -9,13 +7,18 @@ import {
   DatetimeLocalField,
   Submit,
 } from '@redwoodjs/forms'
+
+import type { EditUserById, UpdateUserInput } from 'types/graphql'
 import type { RWGqlError } from '@redwoodjs/forms'
+
+
 
 const formatDatetime = (value) => {
   if (value) {
     return value.replace(/:\d{2}\.\d{3}\w/, '')
   }
 }
+
 
 type FormUser = NonNullable<EditUserById['user']>
 
@@ -28,145 +31,197 @@ interface UserFormProps {
 
 const UserForm = (props: UserFormProps) => {
   const onSubmit = (data: FormUser) => {
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
     props.onSave(data, props?.user?.id)
   }
 
   return (
-    <div className="form-wrapper">
+    <div className="rw-form-wrapper">
       <Form<FormUser> onSubmit={onSubmit} error={props.error}>
         <FormError
           error={props.error}
-          wrapperClassName="form-error-wrapper"
-          titleClassName="form-error-title"
-          listClassName="form-error-list"
+          wrapperClassName="rw-form-error-wrapper"
+          titleClassName="rw-form-error-title"
+          listClassName="rw-form-error-list"
         />
-
+      
         <Label
-          name="email"
-          className="label secondary"
-          errorClassName="label label-error"
+          name="handle"
+          className="rw-label"
+          errorClassName="rw-label rw-label-error"
         >
-          Email
+          Handle
         </Label>
+        
+          <TextField
+            name="handle"
+            defaultValue={props.user?.handle}
+            className="rw-input"
+            errorClassName="rw-input rw-input-error"
+            validation={{ required: true }}
+          />
+        
 
-        <TextField
-          name="email"
-          defaultValue={props.user?.email}
-          className="input"
-          errorClassName="input input-error"
-          validation={{ required: true }}
-        />
-
-        <FieldError name="email" className="form-error" />
+        <FieldError name="handle" className="rw-field-error" />
 
         <Label
           name="hashedPassword"
-          className="label secondary"
-          errorClassName="label label-error"
+          className="rw-label"
+          errorClassName="rw-label rw-label-error"
         >
           Hashed password
         </Label>
+        
+          <TextField
+            name="hashedPassword"
+            defaultValue={props.user?.hashedPassword}
+            className="rw-input"
+            errorClassName="rw-input rw-input-error"
+            validation={{ required: true }}
+          />
+        
 
-        <TextField
-          name="hashedPassword"
-          defaultValue={props.user?.hashedPassword}
-          className="input"
-          errorClassName="input input-error"
-          validation={{ required: true }}
-        />
-
-        <FieldError name="hashedPassword" className="form-error" />
+        <FieldError name="hashedPassword" className="rw-field-error" />
 
         <Label
           name="salt"
-          className="label secondary"
-          errorClassName="label label-error"
+          className="rw-label"
+          errorClassName="rw-label rw-label-error"
         >
           Salt
         </Label>
+        
+          <TextField
+            name="salt"
+            defaultValue={props.user?.salt}
+            className="rw-input"
+            errorClassName="rw-input rw-input-error"
+            validation={{ required: true }}
+          />
+        
 
-        <TextField
-          name="salt"
-          defaultValue={props.user?.salt}
-          className="input"
-          errorClassName="input input-error"
-          validation={{ required: true }}
-        />
-
-        <FieldError name="salt" className="form-error" />
+        <FieldError name="salt" className="rw-field-error" />
 
         <Label
           name="resetToken"
-          className="label secondary"
-          errorClassName="label label-error"
+          className="rw-label"
+          errorClassName="rw-label rw-label-error"
         >
           Reset token
         </Label>
+        
+          <TextField
+            name="resetToken"
+            defaultValue={props.user?.resetToken}
+            className="rw-input"
+            errorClassName="rw-input rw-input-error"
+          />
+        
 
-        <TextField
-          name="resetToken"
-          defaultValue={props.user?.resetToken}
-          className="input"
-          errorClassName="input input-error"
-        />
-
-        <FieldError name="resetToken" className="form-error" />
+        <FieldError name="resetToken" className="rw-field-error" />
 
         <Label
           name="resetTokenExpiresAt"
-          className="label secondary"
-          errorClassName="label label-error"
+          className="rw-label"
+          errorClassName="rw-label rw-label-error"
         >
           Reset token expires at
         </Label>
+        
+          <DatetimeLocalField
+            name="resetTokenExpiresAt"
+            defaultValue={formatDatetime(props.user?.resetTokenExpiresAt)}
+            className="rw-input"
+            errorClassName="rw-input rw-input-error"
+          />
+        
 
-        <DatetimeLocalField
-          name="resetTokenExpiresAt"
-          defaultValue={formatDatetime(props.user?.resetTokenExpiresAt)}
-          className="input"
-          errorClassName="input input-error"
-        />
-
-        <FieldError name="resetTokenExpiresAt" className="form-error" />
-
-        <Label
-          name="name"
-          className="label secondary"
-          errorClassName="label label-error"
-        >
-          Name
-        </Label>
-
-        <TextField
-          name="name"
-          defaultValue={props.user?.name}
-          className="input"
-          errorClassName="input input-error"
-          validation={{ required: true }}
-        />
-
-        <FieldError name="name" className="form-error" />
+        <FieldError name="resetTokenExpiresAt" className="rw-field-error" />
 
         <Label
           name="roles"
-          className="label secondary"
-          errorClassName="label label-error"
+          className="rw-label"
+          errorClassName="rw-label rw-label-error"
         >
           Roles
         </Label>
+        
+          <TextField
+            name="roles"
+            defaultValue={props.user?.roles}
+            className="rw-input"
+            errorClassName="rw-input rw-input-error"
+            validation={{ required: true }}
+          />
+        
 
-        <TextField
-          name="roles"
-          defaultValue={props.user?.roles}
-          className="input"
-          errorClassName="input input-error"
-          validation={{ required: true }}
-        />
+        <FieldError name="roles" className="rw-field-error" />
 
-        <FieldError name="roles" className="form-error" />
+        <Label
+          name="email"
+          className="rw-label"
+          errorClassName="rw-label rw-label-error"
+        >
+          Email
+        </Label>
+        
+          <TextField
+            name="email"
+            defaultValue={props.user?.email}
+            className="rw-input"
+            errorClassName="rw-input rw-input-error"
+          />
+        
 
-        <div className="buttongroup">
-          <Submit disabled={props.loading} className="button large expanded">
+        <FieldError name="email" className="rw-field-error" />
+
+        <Label
+          name="firstName"
+          className="rw-label"
+          errorClassName="rw-label rw-label-error"
+        >
+          First name
+        </Label>
+        
+          <TextField
+            name="firstName"
+            defaultValue={props.user?.firstName}
+            className="rw-input"
+            errorClassName="rw-input rw-input-error"
+          />
+        
+
+        <FieldError name="firstName" className="rw-field-error" />
+
+        <div className="rw-button-group">
+          <Submit
+            disabled={props.loading}
+            className="rw-button rw-button-blue"
+          >
             Save
           </Submit>
         </div>

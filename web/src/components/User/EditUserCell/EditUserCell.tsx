@@ -11,13 +11,14 @@ export const QUERY = gql`
   query EditUserById($id: Int!) {
     user: user(id: $id) {
       id
-      email
+      handle
       hashedPassword
       salt
       resetToken
       resetTokenExpiresAt
-      name
       roles
+      email
+      firstName
       createdAt
       updatedAt
     }
@@ -27,13 +28,14 @@ const UPDATE_USER_MUTATION = gql`
   mutation UpdateUserMutation($id: Int!, $input: UpdateUserInput!) {
     updateUser(id: $id, input: $input) {
       id
-      email
+      handle
       hashedPassword
       salt
       resetToken
       resetTokenExpiresAt
-      name
       roles
+      email
+      firstName
       createdAt
       updatedAt
     }
@@ -43,35 +45,38 @@ const UPDATE_USER_MUTATION = gql`
 export const Loading = () => <div>Loading...</div>
 
 export const Failure = ({ error }: CellFailureProps) => (
-  <div className="cell-error">{error?.message}</div>
+  <div className="rw-cell-error">{error?.message}</div>
 )
 
 export const Success = ({ user }: CellSuccessProps<EditUserById>) => {
-  const [updateUser, { loading, error }] = useMutation(UPDATE_USER_MUTATION, {
-    onCompleted: () => {
-      toast.success('User updated')
-      navigate(routes.users())
-    },
-    onError: (error) => {
-      toast.error(error.message)
-    },
-  })
+  const [updateUser, { loading, error }] = useMutation(
+    UPDATE_USER_MUTATION,
+    {
+      onCompleted: () => {
+        toast.success('User updated')
+        navigate(routes.users())
+      },
+      onError: (error) => {
+        toast.error(error.message)
+      },
+    }
+  )
 
-  const onSave = (input: UpdateUserInput, id: EditUserById['user']['id']) => {
+  const onSave = (
+    input: UpdateUserInput,
+    id: EditUserById['user']['id']
+  ) => {
     updateUser({ variables: { id, input } })
   }
 
   return (
-    <>
-      <p>Edit User Feature Not Available</p>
-      {/* <div className="segment">
-      <header className="segment-header">
-        <h2 className="heading heading-secondary">Edit User {user?.id}</h2>
+    <div className="rw-segment">
+      <header className="rw-segment-header">
+        <h2 className="rw-heading rw-heading-secondary">Edit User {user?.id}</h2>
       </header>
-      <div className="segment-main">
+      <div className="rw-segment-main">
         <UserForm user={user} onSave={onSave} error={error} loading={loading} />
       </div>
-    </div> */}
-    </>
+    </div>
   )
 }

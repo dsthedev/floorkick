@@ -46,28 +46,28 @@ const SignupPage = () => {
     <>
       <MetaTags title="Signup" />
 
-      <section>
-        <Toaster toastOptions={{ className: 'toast', duration: 6000 }} />
-        <div className="scaffold login-container">
-          <div className="segment">
-            <header className="segment-header">
-              <h2 className="heading heading-secondary">Signup</h2>
+      <main className="rw-main">
+        <Toaster toastOptions={{ className: 'rw-toast', duration: 6000 }} />
+        <div className="rw-scaffold rw-login-container">
+          <div className="rw-segment">
+            <header className="rw-segment-header">
+              <h2 className="rw-heading rw-heading-secondary">Signup</h2>
             </header>
 
-            <div className="segment-main">
-              <div className="form-wrapper">
-                <Form onSubmit={onSubmit} className="form-wrapper">
+            <div className="rw-segment-main">
+              <div className="rw-form-wrapper">
+                <Form onSubmit={onSubmit} className="rw-form-wrapper">
                   <Label
                     name="username"
-                    className="label"
-                    errorClassName="label label-error"
+                    className="rw-label"
+                    errorClassName="rw-label rw-label-error"
                   >
                     Username
                   </Label>
                   <TextField
                     name="username"
-                    className="input"
-                    errorClassName="input input-error"
+                    className="rw-input"
+                    errorClassName="rw-input rw-input-error"
                     ref={usernameRef}
                     validation={{
                       required: {
@@ -76,19 +76,19 @@ const SignupPage = () => {
                       },
                     }}
                   />
-                  <FieldError name="username" className="field-error" />
+                  <FieldError name="username" className="rw-field-error" />
 
                   <Label
                     name="password"
-                    className="label"
-                    errorClassName="label label-error"
+                    className="rw-label"
+                    errorClassName="rw-label rw-label-error"
                   >
                     Password
                   </Label>
                   <PasswordField
                     name="password"
-                    className="input"
-                    errorClassName="input input-error"
+                    className="rw-input"
+                    errorClassName="rw-input rw-input-error"
                     autoComplete="current-password"
                     validation={{
                       required: {
@@ -97,10 +97,10 @@ const SignupPage = () => {
                       },
                     }}
                   />
-                  <FieldError name="password" className="field-error" />
+                  <FieldError name="password" className="rw-field-error" />
 
-                  <div className="button-group">
-                    <Submit className="button button-blue">
+                  <div className="rw-button-group">
+                    <Submit className="rw-button rw-button-blue">
                       Sign Up
                     </Submit>
                   </div>
@@ -108,14 +108,14 @@ const SignupPage = () => {
               </div>
             </div>
           </div>
-          <div className="login-link">
+          <div className="rw-login-link">
             <span>Already have an account?</span>{' '}
-            <Link to={routes.login()} className="button">
+            <Link to={routes.login()} className="rw-link">
               Log in!
             </Link>
           </div>
         </div>
-      </section>
+      </main>
     </>
   )
 }

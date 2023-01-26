@@ -9,7 +9,7 @@ import { db } from 'src/lib/db'
 export const serviceRates: QueryResolvers['serviceRates'] = () => {
   return db.serviceRate.findMany({
     where: {
-      ownerId: {
+      authorId: {
         equals: context.currentUser.id,
       },
     },
@@ -21,7 +21,7 @@ export const serviceRates: QueryResolvers['serviceRates'] = () => {
 
 export const serviceRate: QueryResolvers['serviceRate'] = ({ id }) => {
   return db.serviceRate.findFirst({
-    where: { id, ownerId: context.currentUser.id },
+    where: { id, authorId: context.currentUser.id },
   })
 }
 
@@ -52,7 +52,7 @@ export const deleteServiceRate: MutationResolvers['deleteServiceRate'] = ({
 }
 
 export const ServiceRate: ServiceRateRelationResolvers = {
-  owner: (_obj, { root }) => {
-    return db.serviceRate.findUnique({ where: { id: root?.id } }).owner()
+  author: (_obj, { root }) => {
+    return db.serviceRate.findUnique({ where: { id: root?.id } }).author()
   },
 }

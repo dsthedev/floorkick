@@ -8,13 +8,14 @@ export const QUERY = gql`
   query FindUserById($id: Int!) {
     user: user(id: $id) {
       id
-      email
+      handle
       hashedPassword
       salt
       resetToken
       resetTokenExpiresAt
-      name
       roles
+      email
+      firstName
       createdAt
       updatedAt
     }
@@ -26,7 +27,7 @@ export const Loading = () => <div>Loading...</div>
 export const Empty = () => <div>User not found</div>
 
 export const Failure = ({ error }: CellFailureProps) => (
-  <div className="cell-error">{error?.message}</div>
+  <div className="rw-cell-error">{error?.message}</div>
 )
 
 export const Success = ({ user }: CellSuccessProps<FindUserById>) => {

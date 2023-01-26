@@ -15,7 +15,7 @@ const HomePage = () => {
         {isAuthenticated ? (
           <>
             <nav>
-              <div className="grid-x">
+              <div className="grid-x grid-margin-y">
                 <div className="cell">
                   <Link
                     className="button success large expanded"
@@ -24,17 +24,9 @@ const HomePage = () => {
                     Rates
                   </Link>
                 </div>
-                <div className="cell small-6">
+                <div className="cell">
                   <Link
-                    className="button small hollow expanded"
-                    to={routes.notes()}
-                  >
-                    Notes
-                  </Link>
-                </div>
-                <div className="cell small-6">
-                  <Link
-                    className="button small secondary expanded"
+                    className="button small secondary"
                     to={routes.calculators()}
                   >
                     Calculators
@@ -48,14 +40,6 @@ const HomePage = () => {
                         to={routes.users()}
                       >
                         Users
-                      </Link>
-                    </div>
-                    <div className="cell small-6">
-                      <Link
-                        className="button tiny warning expanded"
-                        to={routes.realms()}
-                      >
-                        Realms
                       </Link>
                     </div>
                   </>

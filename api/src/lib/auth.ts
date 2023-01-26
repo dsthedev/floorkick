@@ -29,10 +29,9 @@ export const getCurrentUser = async (session: Decoded) => {
     where: { id: session.id },
     select: {
       id: true,
-      email: true,
-      name: true,
+      handle: true,
+      firstName: true,
       roles: true,
-      realm: true,
     },
   })
 }

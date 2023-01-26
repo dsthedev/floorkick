@@ -3,10 +3,8 @@ import { useAuth } from '@redwoodjs/auth'
 const UserDetailsPrint = () => {
   const { isAuthenticated, currentUser } = useAuth()
 
-  let detailsHTML = {}
-
   if (isAuthenticated && currentUser) {
-    detailsHTML = (
+    return (
       <>
         <h6>Your Profile:</h6>
         <pre>
@@ -27,10 +25,12 @@ const UserDetailsPrint = () => {
       </>
     )
   } else {
-    detailsHTML = ''
+    return (
+      <>
+        <h6>No User Profile Found!</h6>
+      </>
+    )
   }
-
-  return <>{detailsHTML}</>
 }
 
 export default UserDetailsPrint
