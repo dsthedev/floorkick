@@ -35,7 +35,7 @@ const Default = ({
       <div className="scaffold">
         <Toaster toastOptions={{ className: 'toast', duration: 6000 }} />
 
-        <header className="grid-xy">
+        <header className="grid-xy hide-for-print">
           <nav
             aria-label="You are here:"
             role="navigation"

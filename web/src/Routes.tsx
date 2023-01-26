@@ -10,6 +10,7 @@ const Routes = () => {
         <Route path="/rates/{id:Int}/edit" page={CoreServiceRateEditServiceRatePage} name="editServiceRate" />
         <Route path="/rates/{id:Int}" page={CoreServiceRateServiceRatePage} name="serviceRate" />
         <Route path="/rates" page={CoreServiceRateServiceRatesPage} name="serviceRates" />
+        <Route path="/print/rates" page={CoreServiceRateServiceRatesPrintPage} name="serviceRatesPrint" />
       </Set>
       <Set unauthenticated="home" roles={['developer']} wrap={DefaultLayout} title="Users" titleTo="users" buttonLabel="New User" buttonTo="newUser">
         <Route path="/users/new" page={UserNewUserPage} name="newUser" />

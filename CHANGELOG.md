@@ -1,6 +1,10 @@
 # Floorkick Changelog
 
-## 2023.01.19
+## 2023.01.26
+
+- adds print friendly page for rates w/ 2 columns
+
+## 2023.01.25
 
 - big reset to only user + reset
 - clever solution to searching all fields on search results by concatgi
