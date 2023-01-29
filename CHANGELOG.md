@@ -1,5 +1,10 @@
 # Floorkick Changelog
 
+## 2023.01.29
+
+- added profile page
+- testing geolocation & ip tool (ipapi.co)
+
 ## 2023.01.26
 
 - adds print friendly page for rates w/ 2 columns

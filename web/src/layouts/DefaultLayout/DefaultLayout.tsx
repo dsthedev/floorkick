@@ -56,7 +56,6 @@ const Default = ({
                 false
               )}
             </ul>
-            <hr />
           </nav>
 
           {isAuthenticated && !isHomePage ? (
@@ -82,7 +81,16 @@ const Default = ({
                     {currentUser ? currentUser.firstName : ' Guest'}
                   </li>
                   <li className="menu-item">
-                    <Link className="button tiny" to={routes.home()}>
+                    {currentUser ? (
+                      <Link className="" to={routes.profile()}>
+                        My Profile
+                      </Link>
+                    ) : (
+                      false
+                    )}
+                  </li>
+                  <li className="menu-item">
+                    <Link className="" to={routes.home()}>
                       Home
                     </Link>
                   </li>

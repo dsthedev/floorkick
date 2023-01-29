@@ -19,6 +19,7 @@ const Routes = () => {
         <Route path="/users" page={UserUsersPage} name="users" />
       </Set>
       <Set wrap={DefaultLayout} title="Floorkick" titleTo="home" buttonLabel="Home" buttonTo="home">
+        <Route path="/profile" page={ProfilePage} name="profile" />
         <Route path="/calculators" page={CalculatorsPage} name="calculators" />
         <Route path="/sandbox" page={SandboxPage} name="sandbox" />
 

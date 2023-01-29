@@ -30,6 +30,7 @@ export const getCurrentUser = async (session: Decoded) => {
     select: {
       id: true,
       handle: true,
+      email: true,
       firstName: true,
       roles: true,
     },
