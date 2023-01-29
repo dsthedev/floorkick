@@ -43,12 +43,20 @@ const UserDetailsPrint = () => {
               {' ' + ip}
             </li>
             <li>
-              <strong>GPS:</strong> {lat + ', ' + long} <br />
+              <strong>GPS:</strong> {lat + ', ' + long}
+              <br />
+              <br />
               <button onClick={getGeoData} className="button tiny warning">
                 Update GPS
-              </button>
+              </button>{' '}
               <a
-                href={'https://www.google.com/maps/dir/' + lat + ',+' + long}
+                href={
+                  'https://www.google.com/maps/search/?api=1&query=' +
+                  lat +
+                  '%2C' +
+                  long +
+                  '&zoom=10'
+                }
                 className="button tiny secondary"
                 target={'_blank'}
                 rel="noreferrer"
