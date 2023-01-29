@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react'
 
+import geolocation from 'geolocation'
+
 import { useAuth } from '@redwoodjs/auth'
 
 const UserDetailsPrint = () => {
@@ -14,8 +16,13 @@ const UserDetailsPrint = () => {
     const data = await response.json()
 
     setIP(data.ip)
-    setLat(data.latitude)
-    setLong(data.longitude)
+
+    geolocation.getCurrentPosition(function (err, position) {
+      if (err) throw err
+
+      setLat(position.coords.latitude)
+      setLong(position.coords.longitude)
+    })
   }
 
   useEffect(() => {
