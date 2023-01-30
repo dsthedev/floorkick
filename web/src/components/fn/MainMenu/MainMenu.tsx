@@ -1,8 +1,11 @@
 import { useState } from 'react'
 
+import { useAuth } from '@redwoodjs/auth'
 import { Link, routes } from '@redwoodjs/router'
 
 const MainMenu = () => {
+  const { hasRole } = useAuth()
+
   const [showMenuDropdown, setShowMenuDropdown] = useState(false)
 
   return (
@@ -49,6 +52,28 @@ const MainMenu = () => {
               Profile
             </Link>
           </li>
+          {hasRole('developer') ? (
+            <>
+              <li>
+                <Link
+                  className="button tiny hollow secondary"
+                  to={routes.users()}
+                >
+                  Users
+                </Link>
+              </li>
+              <li>
+                <Link
+                  className="button tiny hollow warning"
+                  to={routes.sandbox()}
+                >
+                  Sandbox
+                </Link>
+              </li>
+            </>
+          ) : (
+            false
+          )}
         </ul>
       </li>
     </ul>

@@ -243,6 +243,11 @@ header .button {
   margin: 0;
 }
 
+.mainhome {
+  width: 100%;
+  max-width: 320px;
+}
+
 .scaffold {
   margin: 0 auto;
   padding: 1rem;

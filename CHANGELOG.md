@@ -2,6 +2,7 @@
 
 ## 2023.01.29
 
+- add time, date & greeting to home page
 - added profile page
 - testing geolocation & ip tools
   - use geolocation npm package for latlong, ipapi for ip/else

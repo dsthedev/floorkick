@@ -75,24 +75,28 @@ const Default = ({
 
         {children}
 
-        <footer id="footerbar" className="grid-x">
+        <footer id="footerbar" className="grid-x text-center">
           {isAuthenticated ? (
             <>
-              <div className="cell auto">
-                <h5>
-                  {'Hello, '}
-                  {currentUser ? currentUser.firstName + '!' : ' Guest!'}
-                </h5>
+              <div className="cell">
+                <p>
+                  <small>
+                    Thanks for checking out Floorkick{', '}
+                    {currentUser ? currentUser.firstName : ' Guest'}!
+                  </small>
+                </p>
               </div>
-              <div className="cell shrink text-right">
-                &copy;{' '}
-                <a
-                  href="https://www.darrensopiarz.com/"
-                  target={'_blank'}
-                  rel="noreferrer"
-                >
-                  d11z
-                </a>
+              <div className="cell">
+                <span className="button tiny hollow">
+                  &copy;{' '}
+                  <a
+                    href="https://www.darrensopiarz.com/"
+                    target={'_blank'}
+                    rel="noreferrer"
+                  >
+                    d11z
+                  </a>
+                </span>
               </div>
             </>
           ) : (

@@ -1,3 +1,5 @@
+import { useEffect, useState } from 'react'
+
 import { useAuth } from '@redwoodjs/auth'
 import { Link, routes } from '@redwoodjs/router'
 import { MetaTags } from '@redwoodjs/web'
@@ -5,47 +7,93 @@ import { MetaTags } from '@redwoodjs/web'
 import LoginOrOutLink from 'src/components/fn/LoginOrOutLink/LoginOrOutLink'
 
 const HomePage = () => {
-  const { isAuthenticated, hasRole } = useAuth()
+  const { isAuthenticated, currentUser } = useAuth()
+
+  const locale = 'en'
+  const [today, setDate] = useState(new Date()) // Save the current date to be able to trigger an update
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setDate(new Date())
+    }, 60 * 1000)
+    return () => {
+      clearInterval(timer)
+    }
+  }, [])
+
+  const day = today.toLocaleDateString(locale, { weekday: 'long' })
+  const date =
+    today.toLocaleDateString(locale, {
+      weekday: 'short',
+    }) +
+    ', ' +
+    today.toLocaleDateString(locale, { month: 'short' }) +
+    ' ' +
+    today.getDate()
+
+  const hour = today.getHours()
+
+  const greeting =
+    'Good ' +
+    ((hour < 12 && 'Morning') || (hour < 17 && 'Afternoon') || 'Evening') +
+    ', ' +
+    currentUser.firstName
+
+  const time = today.toLocaleTimeString(locale, {
+    hour: 'numeric',
+    hour12: true,
+    minute: 'numeric',
+  })
 
   return (
     <>
       <MetaTags title="Home" description="Home page" />
 
-      <main className="grid-y grid-padding-x">
+      <main className="text-center">
         {isAuthenticated ? (
           <>
-            <nav>
+            <header>
+              <h2 className="h4">{greeting}</h2>
+              <p className="h3 callout small">{time}</p>
+              <p className="h2 callout small">{date}</p>
+            </header>
+
+            <nav className="callout">
               <div className="grid-x grid-margin-y">
                 <div className="cell">
-                  <Link
-                    className="button success large expanded"
-                    to={routes.serviceRates()}
-                  >
-                    Rates
-                  </Link>
-                </div>
-                <div className="cell">
-                  <Link
-                    className="button small secondary"
-                    to={routes.calculators()}
-                  >
-                    Calculators
-                  </Link>
-                </div>
-                {hasRole('developer') ? (
-                  <>
-                    <div className="cell small-6">
+                  <ul className="menu vertical">
+                    <li>
                       <Link
-                        className="button tiny alert expanded"
-                        to={routes.users()}
+                        className="button success large"
+                        to={routes.serviceRates()}
                       >
-                        Users
+                        Rates
                       </Link>
-                    </div>
-                  </>
-                ) : (
-                  false
-                )}
+                    </li>
+                    <li>
+                      <Link
+                        className="button secondary"
+                        to={routes.calculators()}
+                      >
+                        Calculators
+                      </Link>
+                    </li>
+                    <li>
+                      <Link
+                        className="button hollow menu-text"
+                        to={routes.profile()}
+                      >
+                        Profile
+                      </Link>
+                    </li>
+                    <li>
+                      <br />
+                      <Link className="text-center" to={routes.privacy()}>
+                        Privacy Policy
+                      </Link>
+                    </li>
+                  </ul>
+                </div>
               </div>
             </nav>
           </>
