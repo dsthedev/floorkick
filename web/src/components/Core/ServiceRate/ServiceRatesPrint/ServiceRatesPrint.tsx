@@ -46,12 +46,11 @@ const ServiceRatesPrintList = ({ serviceRates }: FindServiceRates) => {
 
   return (
     <>
-      <div className="grid-x">
+      <div className="grid-x" style={{ width: '100%' }}>
         <header className="cell">
-          <h2>
-            {currentUser ? currentUser.firstName + "'s " : ' My '}
-            Rates
-          </h2>
+          <h1 className="h3">
+            Rates <small>{currentUser ? currentUser.firstName : ' ?'}</small>
+          </h1>
           <p className="input-group hide-for-print">
             <span className="input-group-label secondary">{'Filter'}</span>
             <span className="input-group-field">
@@ -59,40 +58,43 @@ const ServiceRatesPrintList = ({ serviceRates }: FindServiceRates) => {
                 type="text"
                 value={search}
                 onChange={(e) => handleInput(e)}
-                placeholder="Carpet, LVT, Trim..."
+                placeholder="Install, Carpet, Remove, Etc..."
               />
             </span>
           </p>
         </header>
 
-        <div className="cell" style={{ columns: '100px 2' }}>
+        <div className="cell">
           {' '}
-          <table className="table compact unstack-for-medium hover">
-            <tbody>
+          <nav className="printlist callout" style={{ columns: 'auto 2' }}>
+            <div className="menu vertical">
               {results.map((serviceRate) => (
-                <tr key={serviceRate.id}>
-                  <td>
-                    {DisplayCurrency(truncate(serviceRate.value), 'USD')}
-                    <small>
-                      {' per ' + truncate(serviceRate.unit) + ' to '}
-                    </small>
-                    {truncate(serviceRate.task) +
-                      ' ' +
-                      truncate(serviceRate.material)}
-                    {serviceRate.modifiers ? (
-                      <>
-                        <small>
-                          {' [' + truncate(serviceRate.modifiers) + ']'}
-                        </small>
-                      </>
-                    ) : (
-                      false
-                    )}
-                  </td>
-                </tr>
+                <div key={serviceRate.id} className="menu-item">
+                  <h6>
+                    <strong className="lead">
+                      {DisplayCurrency(truncate(serviceRate.value), 'USD')}
+                    </strong>
+                    <small> per </small>
+                    {truncate(serviceRate.unit)}
+                    <span className="float-right">
+                      {serviceRate.modifiers ? (
+                        <>
+                          <small>
+                            {'[' + truncate(serviceRate.modifiers) + '] '}
+                          </small>
+                        </>
+                      ) : (
+                        false
+                      )}
+                      {truncate(serviceRate.task) +
+                        ' ' +
+                        truncate(serviceRate.material)}
+                    </span>
+                  </h6>
+                </div>
               ))}
-            </tbody>
-          </table>
+            </div>
+          </nav>
         </div>
       </div>
     </>

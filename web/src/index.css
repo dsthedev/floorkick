@@ -244,8 +244,8 @@ header .button {
 }
 
 .mainhome {
-  width: 100%;
-  max-width: 320px;
+  /* width: 100%; */
+  /* max-width: 320px; */
 }
 
 .scaffold {
@@ -264,4 +264,16 @@ header .button {
 
 #footerbar {
   margin-top: 1rem;
+}
+
+.printlist h6 {
+  display: inline-block;
+  width: 100%;
+  margin: 0 auto 0.25rem;
+  padding-bottom: 0.25rem;
+  border-bottom: 1px solid gray;
+}
+
+table .button {
+  margin: 0;
 }
