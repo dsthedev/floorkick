@@ -84,19 +84,26 @@ const Default = ({
                     Thanks for checking out Floorkick{', '}
                     {currentUser ? currentUser.firstName : ' Guest'}!
                   </small>
+                  <hr />
+                  <LoginOrOutLink
+                    loggedInClass={'button small alert'}
+                    loggedOutClass={'button small secondary'}
+                  />
                 </p>
               </div>
               <div className="cell">
-                <span className="button tiny hollow">
-                  &copy;{' '}
-                  <a
-                    href="https://www.darrensopiarz.com/"
-                    target={'_blank'}
-                    rel="noreferrer"
-                  >
-                    d11z
-                  </a>
-                </span>
+                <h6>
+                  <small>
+                    &copy;{' '}
+                    <a
+                      href="https://www.darrensopiarz.com/"
+                      target={'_blank'}
+                      rel="noreferrer"
+                    >
+                      d11z
+                    </a>
+                  </small>
+                </h6>
               </div>
             </>
           ) : (
