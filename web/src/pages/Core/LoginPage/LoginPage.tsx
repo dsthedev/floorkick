@@ -47,17 +47,22 @@ const LoginPage = () => {
     <>
       <MetaTags title="Login" />
 
-      <main className="rw-main">
-        <Toaster toastOptions={{ className: 'rw-toast', duration: 6000 }} />
-        <div className="rw-scaffold rw-login-container">
-          <div className="rw-segment">
-            <header className="rw-segment-header">
-              <h2 className="rw-heading rw-heading-secondary">Login</h2>
+      <main className="main text-center">
+        <Toaster toastOptions={{ className: 'toast', duration: 6000 }} />
+        <header>
+          <h1 className="h3">Floorkick</h1>
+        </header>
+        <div className="scaffold login-container">
+          <div className="segment">
+            <header className="segment-header">
+              <h2>
+                <small>Login</small>
+              </h2>
             </header>
 
-            <div className="rw-segment-main">
-              <div className="rw-form-wrapper">
-                <Form onSubmit={onSubmit} className="rw-form-wrapper">
+            <div className="segment-main">
+              <div className="form-wrapper">
+                <Form onSubmit={onSubmit} className="form">
                   <Label
                     name="username"
                     className="is-label"
@@ -67,8 +72,8 @@ const LoginPage = () => {
                   </Label>
                   <TextField
                     name="username"
-                    className="rw-input"
-                    errorClassName="rw-input rw-input-error"
+                    className="input"
+                    errorClassName="input input-error"
                     ref={usernameRef}
                     validation={{
                       required: {
@@ -92,8 +97,8 @@ const LoginPage = () => {
                   </Label>
                   <PasswordField
                     name="password"
-                    className="rw-input"
-                    errorClassName="rw-input rw-input-error"
+                    className="input"
+                    errorClassName="input input-error"
                     autoComplete="current-password"
                     validation={{
                       required: {
@@ -108,8 +113,8 @@ const LoginPage = () => {
                     className="form-error is-visible"
                   />
 
-                  <div className="rw-button-group">
-                    <Submit className="rw-button rw-button-blue">Login</Submit>
+                  <div className="button-group">
+                    <Submit className="button large expanded">Login</Submit>
                   </div>
                 </Form>
               </div>
