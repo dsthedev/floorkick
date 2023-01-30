@@ -21,11 +21,9 @@ const HomePage = () => {
     }
   }, [])
 
-  const day = today.toLocaleDateString(locale, { weekday: 'long' })
+  const day = today.toLocaleDateString(locale, { weekday: 'short' })
   const date =
-    today.toLocaleDateString(locale, {
-      weekday: 'short',
-    }) +
+    day +
     ', ' +
     today.toLocaleDateString(locale, { month: 'short' }) +
     ' ' +
@@ -37,7 +35,7 @@ const HomePage = () => {
     'Good ' +
     ((hour < 12 && 'Morning') || (hour < 17 && 'Afternoon') || 'Evening') +
     ', ' +
-    currentUser.firstName
+    (currentUser ? currentUser.firstName : 'Guest')
 
   const time = today.toLocaleTimeString(locale, {
     hour: 'numeric',
