@@ -10,7 +10,16 @@ const ServiceRatesPage = () => {
 
       <ServiceRatesCell />
 
-      <Link to={routes.serviceRatesPrint()}>View for Printing</Link>
+      <section>
+        <p>
+          <Link
+            className="button large success expanded"
+            to={routes.serviceRatesPrint()}
+          >
+            Printer Friendly Version
+          </Link>
+        </p>
+      </section>
     </>
   )
 }

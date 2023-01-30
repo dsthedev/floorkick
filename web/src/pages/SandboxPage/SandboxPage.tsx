@@ -1,7 +1,4 @@
-import { Link, routes } from '@redwoodjs/router'
 import { MetaTags } from '@redwoodjs/web'
-
-import CalculateRollLengthFromTotalYardage from 'src/components/fn/CalculateRollLengthFromTotalYardage/CalculateRollLengthFromTotalYardage'
 
 const SandboxPage = () => {
   return (
@@ -15,13 +12,9 @@ const SandboxPage = () => {
 
         <p>
           {
-            'The sandbox page is where a developer puts features in for quick & loose testing.  Do not rely on anything here as it is a digital playground, where things can and will break.'
+            "The sandbox page is where developer's put features in for quick & loose testing.  Do not rely on anything here as it is a digital playground, where things can and will break."
           }
         </p>
-
-        <h3>Calculators:</h3>
-
-        <CalculateRollLengthFromTotalYardage />
 
         <hr />
 

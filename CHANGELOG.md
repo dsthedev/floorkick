@@ -3,7 +3,10 @@
 ## 2023.01.29
 
 - added profile page
-- testing geolocation & ip tool (ipapi.co)
+- testing geolocation & ip tools
+  - use geolocation npm package for latlong, ipapi for ip/else
+- adds basic dropdown menu with toggle state
+- moves "new \_\_\_\_" button between breadcrumbs and new dropmenu
 
 ## 2023.01.26
 

@@ -249,10 +249,14 @@ header .button {
   background: rgba(255,255,255,0.8);
   border: 1px solid black;
 }
-.scaffold .menu.vertical li {
+/* .scaffold .menu.vertical li {
   margin-bottom: 1rem;
-}
+} */
 
 .input-group input {
   margin: 0;
+}
+
+#footerbar {
+  margin-top: 1rem;
 }

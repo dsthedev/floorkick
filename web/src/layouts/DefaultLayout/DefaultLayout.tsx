@@ -5,6 +5,7 @@ import { Link, routes, useMatch } from '@redwoodjs/router'
 import { Toaster } from '@redwoodjs/web/toast'
 
 import LoginOrOutLink from 'src/components/fn/LoginOrOutLink/LoginOrOutLink'
+import MainMenu from 'src/components/fn/MainMenu/MainMenu'
 
 type LayoutProps = {
   title: string
@@ -35,11 +36,11 @@ const Default = ({
       <div className="scaffold">
         <Toaster toastOptions={{ className: 'toast', duration: 6000 }} />
 
-        <header className="grid-xy hide-for-print">
+        <header className="grid-x hide-for-print">
           <nav
             aria-label="You are here:"
             role="navigation"
-            className="cell shrink"
+            className="cell auto"
           >
             <ul className="breadcrumbs">
               <li>
@@ -59,47 +60,31 @@ const Default = ({
           </nav>
 
           {isAuthenticated && !isHomePage ? (
-            <nav className="cell auto text-right">
-              <Link to={routes[buttonTo]()} className="button success">
-                {buttonLabel + ' +'}
+            <nav className="cell shrink text-right">
+              <Link to={routes[buttonTo]()} className="button small">
+                {buttonLabel}
               </Link>
             </nav>
           ) : (
             false
           )}
+          <nav className="cell shrink">
+            <MainMenu />
+          </nav>
         </header>
 
         {children}
 
-        <footer className="grid-x">
+        <footer id="footerbar" className="grid-x">
           {isAuthenticated ? (
             <>
-              <nav className="cell">
-                <hr />
-                <ul className="menu horizontal">
-                  <li className="menu-text">
-                    {currentUser ? currentUser.firstName : ' Guest'}
-                  </li>
-                  <li className="menu-item">
-                    {currentUser ? (
-                      <Link className="" to={routes.profile()}>
-                        My Profile
-                      </Link>
-                    ) : (
-                      false
-                    )}
-                  </li>
-                  <li className="menu-item">
-                    <Link className="" to={routes.home()}>
-                      Home
-                    </Link>
-                  </li>
-                  <li className="menu-item">
-                    <LoginOrOutLink loggedInClass={''} loggedOutClass={''} />
-                  </li>
-                </ul>
-              </nav>
-              <div className="cell text-right">
+              <div className="cell auto">
+                <h5>
+                  {'Hello, '}
+                  {currentUser ? currentUser.firstName + '!' : ' Guest!'}
+                </h5>
+              </div>
+              <div className="cell shrink text-right">
                 &copy;{' '}
                 <a
                   href="https://www.darrensopiarz.com/"
