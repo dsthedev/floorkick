@@ -135,49 +135,17 @@ const JobSheetsList = ({ jobSheets }: FindJobSheets) => {
       <table className="table hover">
         <thead>
           <tr>
-            {/* <th>Id</th> */}
-            {/* <th>Job id</th> */}
-            <th>Start date</th>
-            {/* <th>End date</th> */}
-            {/* <th>For week</th> */}
-            {/* <th>Retailer</th> */}
-            <th>Rep</th>
-            {/* <th>Customer name</th> */}
-            {/* <th>Customer phone</th> */}
-            {/* <th>Customer address</th> */}
-            <th>Purpose</th>
-            {/* <th>Subfloor type</th> */}
-            {/* <th>Notes</th> */}
-            {/* <th>Total</th> */}
-            {/* <th>Marked as complete</th> */}
-            {/* <th>Author id</th> */}
-            {/* <th>Created at</th> */}
-            {/* <th>Updated at</th> */}
-            <th>&nbsp;</th>
+            <th>Date, Rep, Purpose</th>
           </tr>
         </thead>
         <tbody>
           {jobsMarkedAsComplete.map((jobSheet) => (
             <tr key={jobSheet.id}>
-              {/* <td>{truncate(jobSheet.id)}</td> */}
-              {/* <td>{truncate(jobSheet.jobId)}</td> */}
-              <td>{timeTag(jobSheet.startDate)}</td>
-              {/* <td>{timeTag(jobSheet.endDate)}</td> */}
-              {/* <td>{truncate(jobSheet.forWeek)}</td> */}
-              {/* <td>{truncate(jobSheet.retailer)}</td> */}
-              <td>{truncate(jobSheet.rep)}</td>
-              {/* <td>{truncate(jobSheet.customerName)}</td> */}
-              {/* <td>{truncate(jobSheet.customerPhone)}</td> */}
-              {/* <td>{truncate(jobSheet.customerAddress)}</td> */}
-              <td>{truncate(jobSheet.purpose)}</td>
-              {/* <td>{truncate(jobSheet.subfloorType)}</td> */}
-              {/* <td>{truncate(jobSheet.notes)}</td> */}
-              {/* <td>{truncate(jobSheet.total)}</td> */}
-              {/* <td>{checkboxInputTag(jobSheet.markedAsComplete)}</td> */}
-              {/* <td>{truncate(jobSheet.authorId)}</td> */}
-              {/* <td>{timeTag(jobSheet.createdAt)}</td> */}
-              {/* <td>{timeTag(jobSheet.updatedAt)}</td> */}
               <td>
+                <strong>{timeTag(jobSheet.startDate)}</strong>,{' '}
+                <small>{truncate(jobSheet.rep)}</small>,
+                {truncate(jobSheet.purpose)}
+                <br />
                 <nav className="table-actions">
                   <Link
                     to={routes.jobSheet({ id: jobSheet.id })}
