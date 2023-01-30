@@ -1,5 +1,6 @@
 import React from 'react'
 
+import dateformat from 'dateformat'
 import humanize from 'humanize-string'
 
 const MAX_STRING_LENGTH = 150
@@ -45,7 +46,10 @@ export const timeTag = (dateTime?: string) => {
   if (dateTime) {
     output = (
       <time dateTime={dateTime} title={dateTime}>
-        {new Date(dateTime).toUTCString()}
+        {dateformat(
+          new Date(dateTime.replace(/-/g, '/').replace(/T.+/, '')),
+          'm/d'
+        )}
       </time>
     )
   }
@@ -55,4 +59,11 @@ export const timeTag = (dateTime?: string) => {
 
 export const checkboxInputTag = (checked: boolean) => {
   return <input type="checkbox" checked={checked} disabled />
+}
+
+// YYYY-MM-DD
+export const toJSONLocalDate = (date) => {
+  const local = new Date(date)
+  local.setMinutes(date.getMinutes() - date.getTimezoneOffset())
+  return local.toJSON().slice(0, 10)
 }

@@ -49,15 +49,16 @@ const LoginPage = () => {
 
       <main className="main text-center">
         <Toaster toastOptions={{ className: 'toast', duration: 6000 }} />
-        <header>
-          <h1 className="h3">Floorkick</h1>
-        </header>
         <div className="scaffold login-container">
           <div className="segment">
             <header className="segment-header">
-              <h2>
+              <h1 className="callout small primary">
+                Floorkick
+                <br />
+              </h1>
+              <p>
                 <small>Login</small>
-              </h2>
+              </p>
             </header>
 
             <div className="segment-main">

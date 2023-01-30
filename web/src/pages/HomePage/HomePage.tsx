@@ -62,11 +62,21 @@ const HomePage = () => {
                   <ul className="menu vertical">
                     <li>
                       <Link
-                        className="button success large"
+                        className="button large warning"
+                        to={routes.jobSheets()}
+                      >
+                        Job Sheets
+                      </Link>
+                      <br />
+                    </li>
+                    <li>
+                      <Link
+                        className="button large success"
                         to={routes.serviceRates()}
                       >
                         Rates
                       </Link>
+                      <br />
                     </li>
                     <li>
                       <Link
@@ -75,6 +85,7 @@ const HomePage = () => {
                       >
                         Calculators
                       </Link>
+                      <br />
                     </li>
                     <li>
                       <Link

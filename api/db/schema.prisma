@@ -35,7 +35,8 @@ model User {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  rates ServiceRate[]
+  rates    ServiceRate[]
+  JobSheet JobSheet[]
 }
 
 model ServiceRate {
@@ -58,6 +59,41 @@ model ServiceRate {
   updatedAt DateTime @updatedAt()
 
   @@unique([authorId, id])
+}
+
+model JobSheet {
+  id    Int     @id @default(autoincrement())
+  jobId String? @unique @default(uuid())
+
+  startDate DateTime @default(now())
+  endDate   DateTime @default(now())
+  forWeek   Int      @default(0)
+
+  retailer String @default("")
+  rep      String @default("")
+
+  customerName    String  @default("")
+  customerPhone   String?
+  customerAddress String  @default("")
+
+  purpose      String  @default("")
+  subfloorType String  @default("")
+  notes        String? @default("")
+  total        Int?    @default(0)
+
+  markedAsComplete Boolean @default(false)
+
+  author   User? @relation(fields: [authorId], references: [id])
+  authorId Int?  @default(1)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // workType     String  @default("")
+  // workMaterial String  @default("")
+  // areas        String?
+  // products     String?
+  // transition   String?
 }
 
 // model Note {
@@ -93,35 +129,6 @@ model ServiceRate {
 //   updatedAt DateTime @updatedAt
 
 //   @@unique([ownerId, id])
-// }
-
-// model JobSheet {
-//   id    Int     @id @default(autoincrement())
-//   jobId String? @default(uuid())
-
-//   startDate DateTime @default(now())
-//   endDate   DateTime @default(now())
-//   rep       String   @default("")
-
-//   customerName    String  @default("")
-//   customerPhone   String?
-//   customerAddress String  @default("")
-
-//   workType     String  @default("")
-//   workMaterial String  @default("")
-//   areas        String?
-//   products     String?
-//   subfloorType String  @default("")
-//   transition   String?
-//   notes        String? @default("")
-
-//   markedAsComplete Boolean @default(false)
-
-//   owner   User? @relation(fields: [ownerId], references: [id])
-//   ownerId Int?  @default(1)
-
-//   createdAt DateTime @default(now())
-//   updatedAt DateTime @updatedAt
 // }
 
 // model PayStub {

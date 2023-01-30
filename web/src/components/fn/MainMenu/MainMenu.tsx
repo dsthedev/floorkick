@@ -36,6 +36,11 @@ const MainMenu = () => {
             }
           >
             <li>
+              <Link className="button large warning" to={routes.jobSheets()}>
+                Job Sheets
+              </Link>
+            </li>
+            <li>
               <Link className="button large success" to={routes.serviceRates()}>
                 Rates
               </Link>

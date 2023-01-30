@@ -1,5 +1,9 @@
 # Floorkick Changelog
 
+## 2023.01.30
+
+- reimplements jobsheets from before with a few tweaks
+
 ## 2023.01.29
 
 - add time, date & greeting to home page

@@ -81,17 +81,15 @@ const Default = ({
             {isAuthenticated ? (
               <>
                 <div className="cell">
-                  <p>
-                    <small>
-                      Thanks for checking out Floorkick{', '}
-                      {currentUser ? currentUser.firstName : ' Guest'}!
-                    </small>
-                    <hr />
-                    <LoginOrOutLink
-                      loggedInClass={'button small alert'}
-                      loggedOutClass={'button small secondary'}
-                    />
-                  </p>
+                  <small>
+                    Thanks for checking out Floorkick{', '}
+                    {currentUser ? currentUser.firstName : ' Guest'}!
+                  </small>
+                  <hr />
+                  <LoginOrOutLink
+                    loggedInClass={'button small alert'}
+                    loggedOutClass={'button small secondary'}
+                  />
                 </div>
               </>
             ) : (

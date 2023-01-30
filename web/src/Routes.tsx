@@ -1,10 +1,17 @@
 import { Set, Router, Route } from '@redwoodjs/router'
 
 import DefaultLayout from 'src/layouts/DefaultLayout'
+// import ScaffoldLayout from 'src/layouts/ScaffoldLayout'
 
 const Routes = () => {
   return (
     <Router>
+      <Set unauthenticated="home" roles={['developer', 'installer']} wrap={DefaultLayout} title="Job Sheets" titleTo="jobSheets" buttonLabel="New Job Sheet" buttonTo="newJobSheet">
+        <Route path="/job-sheets/new" page={CoreJobSheetNewJobSheetPage} name="newJobSheet" />
+        <Route path="/job-sheets/{id:Int}/edit" page={CoreJobSheetEditJobSheetPage} name="editJobSheet" />
+        <Route path="/job-sheets/{id:Int}" page={CoreJobSheetJobSheetPage} name="jobSheet" />
+        <Route path="/job-sheets" page={CoreJobSheetJobSheetsPage} name="jobSheets" />
+      </Set>
       <Set unauthenticated="home" roles={['developer', 'installer']} wrap={DefaultLayout} title="Rates" titleTo="serviceRates" buttonLabel="New Rate" buttonTo="newServiceRate">
         <Route path="/rates/new" page={CoreServiceRateNewServiceRatePage} name="newServiceRate" />
         <Route path="/rates/{id:Int}/edit" page={CoreServiceRateEditServiceRatePage} name="editServiceRate" />
