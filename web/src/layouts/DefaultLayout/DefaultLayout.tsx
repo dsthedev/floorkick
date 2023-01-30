@@ -37,34 +37,36 @@ const Default = ({
         <Toaster toastOptions={{ className: 'toast', duration: 6000 }} />
 
         <header className="grid-x hide-for-print">
-          <nav
-            aria-label="You are here:"
-            role="navigation"
-            className="cell auto"
-          >
-            <ul className="breadcrumbs">
-              <li>
-                <Link to={routes.home()}>Floorkick</Link>
-              </li>
-              {isAuthenticated && !isHomePage ? (
-                <>
+          {isAuthenticated ? (
+            <>
+              <nav
+                aria-label="You are here:"
+                role="navigation"
+                className="cell auto"
+              >
+                <ul className="breadcrumbs">
                   <li>
-                    <span className="show-for-sr">Current: </span>
-                    <Link to={routes[titleTo]()}>{title}</Link>
+                    <Link to={routes.home()}>Floorkick</Link>
                   </li>
-                </>
-              ) : (
-                false
-              )}
-            </ul>
-          </nav>
+                  {isAuthenticated && !isHomePage ? (
+                    <>
+                      <li>
+                        <span className="show-for-sr">Current: </span>
+                        <Link to={routes[titleTo]()}>{title}</Link>
+                      </li>
+                    </>
+                  ) : (
+                    false
+                  )}
+                </ul>
+              </nav>
 
-          {isAuthenticated && !isHomePage ? (
-            <nav className="cell shrink text-right">
-              <Link to={routes[buttonTo]()} className="button small">
-                {buttonLabel}
-              </Link>
-            </nav>
+              <nav className="cell shrink text-right">
+                <Link to={routes[buttonTo]()} className="button small">
+                  {buttonLabel}
+                </Link>
+              </nav>
+            </>
           ) : (
             false
           )}
@@ -91,24 +93,24 @@ const Default = ({
                   />
                 </p>
               </div>
-              <div className="cell">
-                <h6>
-                  <small>
-                    &copy;{' '}
-                    <a
-                      href="https://www.darrensopiarz.com/"
-                      target={'_blank'}
-                      rel="noreferrer"
-                    >
-                      d11z
-                    </a>
-                  </small>
-                </h6>
-              </div>
             </>
           ) : (
             false
           )}
+          <div className="cell">
+            <h6>
+              <small>
+                &copy;{' '}
+                <a
+                  href="https://www.darrensopiarz.com/"
+                  target={'_blank'}
+                  rel="noreferrer"
+                >
+                  d11z
+                </a>
+              </small>
+            </h6>
+          </div>
         </footer>
       </div>
     </>

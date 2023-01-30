@@ -97,11 +97,16 @@ const HomePage = () => {
           </>
         ) : (
           <>
-            <h2>Welcome to Floorkick!</h2>
+            <h1 className="callout small primary">Floorkick</h1>
+            <p className="lead">
+              <small>{"A flooring installer's digital sidekick."}</small>
+            </p>
+            <hr />
             <LoginOrOutLink
               loggedInClass={'button large alert'}
-              loggedOutClass={'button large secondary'}
+              loggedOutClass={'button large expanded'}
             />
+            <hr />
           </>
         )}
       </main>
