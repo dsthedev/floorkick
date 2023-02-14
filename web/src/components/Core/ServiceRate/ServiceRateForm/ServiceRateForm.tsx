@@ -193,11 +193,13 @@ const ServiceRateForm = (props: ServiceRateFormProps) => {
           </Label>
         </div>
 
-        <div className="cell">
-          <Submit disabled={props.loading} className="button large expanded">
-            Save
-          </Submit>
-        </div>
+        <hr />
+        <Submit
+          disabled={props.loading}
+          className="button is-primary is-large is-fullwidth"
+        >
+          Save
+        </Submit>
       </Form>
     </div>
   )

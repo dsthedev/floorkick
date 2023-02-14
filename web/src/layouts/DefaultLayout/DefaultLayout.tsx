@@ -34,25 +34,24 @@ const Default = ({
       ></div>
       <Toaster toastOptions={{ className: 'toast', duration: 6000 }} />
 
-      <div className="section">
-        <div className="container">
+      <div className="container">
+        <div className="section">
           <div className="box">
             <header className="hide-for-print">
               {isAuthenticated ? (
                 <>
                   <nav
-                    aria-label="You are here:"
+                    aria-label="breadcrumbs"
                     role="navigation"
-                    className="cell auto"
+                    className="breadcrumb"
                   >
-                    <ul className="breadcrumbs">
+                    <ul>
                       <li>
                         <Link to={routes.home()}>Floorkick</Link>
                       </li>
                       {isAuthenticated && !isHomePage ? (
                         <>
                           <li>
-                            <span className="show-for-sr">Current: </span>
                             <Link to={routes[titleTo]()}>{title}</Link>
                           </li>
                         </>
@@ -61,34 +60,19 @@ const Default = ({
                       )}
                     </ul>
                   </nav>
-
-                  <nav className="cell shrink text-right">
-                    <Link to={routes[buttonTo]()} className="button small">
-                      {buttonLabel}
-                    </Link>
-                  </nav>
+                  <hr />
                 </>
               ) : (
                 false
               )}
-              <nav className="cell shrink">
-                <MainMenu />
-              </nav>
             </header>
 
             {children}
 
-            <footer
-              id="footerbar"
-              className="grid-x text-center hide-for-print"
-            >
+            <footer id="footerbar" className="hide-for-print">
               {isAuthenticated ? (
                 <>
-                  <div className="cell">
-                    <small>
-                      Thanks for checking out Floorkick{', '}
-                      {currentUser ? currentUser.firstName : ' Guest'}!
-                    </small>
+                  <div>
                     <hr />
                     <LoginOrOutLink
                       loggedInClass={'button small alert'}
@@ -99,7 +83,7 @@ const Default = ({
               ) : (
                 false
               )}
-              <div className="cell">
+              <div>
                 <h6>
                   <small>
                     &copy;{' '}

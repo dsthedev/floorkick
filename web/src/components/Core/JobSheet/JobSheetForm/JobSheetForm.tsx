@@ -285,7 +285,8 @@ const JobSheetForm = (props: JobSheetFormProps) => {
           <Label
             name="markedAsComplete"
             className={
-              'expanded button ' + (markedDisplay ? 'success' : 'warning')
+              'button is-large is-fullwidth is-light ' +
+              (markedDisplay ? 'is-success' : 'is-warning')
             }
             errorClassName="label alert"
           >
@@ -323,12 +324,14 @@ const JobSheetForm = (props: JobSheetFormProps) => {
 
           <FieldError name="authorId" className="form-error is-visible" />
         </div>
+        <hr />
 
-        <div className="button-group">
-          <Submit disabled={props.loading} className="button button-blue">
-            Save
-          </Submit>
-        </div>
+        <Submit
+          disabled={props.loading}
+          className="button is-primary is-large is-fullwidth"
+        >
+          Save
+        </Submit>
       </Form>
     </div>
   )
