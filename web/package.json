@@ -12,17 +12,28 @@
       "not IE_Mob 11"
     ]
   },
+  "scripts": {
+    "css-build": "node-sass --omit-source-map-url ./src/bulma.sass ./src/index.css",
+    "css-watch": "npm run css-build -- --watch",
+    "start": "npm run css-watch"
+  },
+  "devDependencies": {
+    "bulma": "^0.9.4",
+    "foundation-sites": "^6.7.5",
+    "node-sass": "^8.0.0"
+  },
   "dependencies": {
     "@redwoodjs/auth": "3.8.0",
     "@redwoodjs/forms": "3.8.0",
     "@redwoodjs/router": "3.8.0",
     "@redwoodjs/web": "3.8.0",
     "dateformat": "^5.0.3",
-    "foundation-sites": "^6.7.5",
     "geolocation": "^0.2.0",
     "humanize-string": "2.1.0",
+    "install": "^0.13.0",
     "prop-types": "15.8.1",
     "react": "17.0.2",
-    "react-dom": "17.0.2"
+    "react-dom": "17.0.2",
+    "yarn": "^1.22.19"
   }
 }

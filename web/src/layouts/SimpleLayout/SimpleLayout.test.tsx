@@ -1,14 +1,14 @@
 import { render } from '@redwoodjs/testing/web'
 
-import CalculatorsPage from './CalculatorsPage'
+import SimpleLayout from './SimpleLayout'
 
 //   Improve this test with help from the Redwood Testing Doc:
 //   https://redwoodjs.com/docs/testing#testing-pages-layouts
 
-describe('CalculatorsPage', () => {
+describe('SimpleLayout', () => {
   it('renders successfully', () => {
     expect(() => {
-      render(<CalculatorsPage />)
+      render(<SimpleLayout />)
     }).not.toThrow()
   })
 })

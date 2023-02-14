@@ -4,6 +4,7 @@ import { useAuth } from '@redwoodjs/auth'
 import { Link, routes } from '@redwoodjs/router'
 import { MetaTags } from '@redwoodjs/web'
 
+import GetWeekNumber from 'src/components/fn/GetWeekNumber/GetWeekNumber'
 import LoginOrOutLink from 'src/components/fn/LoginOrOutLink/LoginOrOutLink'
 
 const HomePage = () => {
@@ -47,80 +48,73 @@ const HomePage = () => {
     <>
       <MetaTags title="Home" description="Home page" />
 
-      <main className="text-center">
+      <div className="box login">
         {isAuthenticated ? (
           <>
-            <header>
+            <header className="has-text-centered">
               <h2 className="h4">{greeting}</h2>
-              <p className="h3 callout small">{time}</p>
-              <p className="h2 callout small">{date}</p>
+              <p className="title">{time}</p>
+              <h5 className="subtitle">
+                {date}
+                <small> | Week {GetWeekNumber(new Date())}</small>
+              </h5>
             </header>
 
-            <nav className="callout">
-              <div className="grid-x grid-margin-y">
-                <div className="cell">
-                  <ul className="menu vertical">
-                    <li>
-                      <Link
-                        className="button large warning"
-                        to={routes.jobSheets()}
-                      >
-                        Job Sheets
-                      </Link>
-                      <br />
-                    </li>
-                    <li>
-                      <Link
-                        className="button large success"
-                        to={routes.serviceRates()}
-                      >
-                        Rates
-                      </Link>
-                      <br />
-                    </li>
-                    <li>
-                      <Link
-                        className="button secondary"
-                        to={routes.calculators()}
-                      >
-                        Calculators
-                      </Link>
-                      <br />
-                    </li>
-                    <li>
-                      <Link
-                        className="button hollow menu-text"
-                        to={routes.profile()}
-                      >
-                        Profile
-                      </Link>
-                    </li>
-                    <li>
-                      <br />
-                      <Link className="text-center" to={routes.privacy()}>
-                        Privacy Policy
-                      </Link>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </nav>
+            <main>
+              <hr />
+              <nav className="buttons">
+                <Link
+                  className="button is-large is-primary is-light is-fullwidth"
+                  to={routes.jobSheets()}
+                >
+                  Jobs
+                </Link>
+                <Link
+                  className="button is-large is-warning is-light is-fullwidth"
+                  to={routes.serviceRates()}
+                >
+                  Rates
+                </Link>
+              </nav>
+              <hr />
+            </main>
           </>
         ) : (
           <>
-            <h1 className="callout small primary">Floorkick</h1>
-            <p className="lead">
-              <small>{"A flooring installer's digital sidekick."}</small>
-            </p>
-            <hr />
-            <LoginOrOutLink
-              loggedInClass={'button large alert'}
-              loggedOutClass={'button large expanded'}
-            />
-            <hr />
+            <header className="has-text-centered">
+              <h1 className="title">
+                <Link to={routes.home()}>{'Floorkick'}</Link>
+              </h1>
+              <p className="subtitle">
+                {"A flooring installer's digital sidekick."}
+              </p>
+            </header>
+
+            <main className="has-text-centered">
+              <hr />
+              <LoginOrOutLink
+                loggedInClass={'button is-large is-warning is-responsive'}
+                loggedOutClass={'button is-large is-primary is-responsive'}
+              />
+              <hr />
+            </main>
           </>
         )}
-      </main>
+        <footer className="has-text-centered">
+          <h6>
+            <small>
+              &copy;{' '}
+              <a
+                href="https://www.darrensopiarz.com/"
+                target={'_blank'}
+                rel="noreferrer"
+              >
+                d11z
+              </a>
+            </small>
+          </h6>
+        </footer>
+      </div>
     </>
   )
 }

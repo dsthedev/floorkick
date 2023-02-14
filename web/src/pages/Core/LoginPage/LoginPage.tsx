@@ -47,82 +47,94 @@ const LoginPage = () => {
     <>
       <MetaTags title="Login" />
 
-      <main className="main text-center">
+      <div className="box login">
         <Toaster toastOptions={{ className: 'toast', duration: 6000 }} />
-        <div className="scaffold login-container">
-          <div className="segment">
-            <header className="segment-header">
-              <h1 className="callout small primary">
-                Floorkick
-                <br />
-              </h1>
-              <p>
-                <small>Login</small>
-              </p>
-            </header>
+        <header className="has-text-centered">
+          <h1 className="title">
+            <Link to={routes.home()}>{'Floorkick'}</Link>
+          </h1>
+          <p className="subtitle">{'Login'}</p>
+        </header>
 
-            <div className="segment-main">
-              <div className="form-wrapper">
-                <Form onSubmit={onSubmit} className="form">
-                  <Label
-                    name="username"
-                    className="is-label"
-                    errorClassName="is-invalid-label"
-                  >
-                    Username
-                  </Label>
-                  <TextField
-                    name="username"
-                    className="input"
-                    errorClassName="input input-error"
-                    ref={usernameRef}
-                    validation={{
-                      required: {
-                        value: true,
-                        message: 'Username is required',
-                      },
-                    }}
-                  />
+        <main>
+          <hr />
+          <Form onSubmit={onSubmit} className="form">
+            <div className="field">
+              <Label
+                name="username"
+                className="label h4"
+                errorClassName="label is-danger"
+              >
+                Username
+              </Label>
 
-                  <FieldError
-                    name="username"
-                    className="form-error is-visible"
-                  />
-
-                  <Label
-                    name="password"
-                    className="is-label"
-                    errorClassName="is-invalid-label"
-                  >
-                    Password
-                  </Label>
-                  <PasswordField
-                    name="password"
-                    className="input"
-                    errorClassName="input input-error"
-                    autoComplete="current-password"
-                    validation={{
-                      required: {
-                        value: true,
-                        message: 'Password is required',
-                      },
-                    }}
-                  />
-
-                  <FieldError
-                    name="password"
-                    className="form-error is-visible"
-                  />
-
-                  <div className="button-group">
-                    <Submit className="button large expanded">Login</Submit>
-                  </div>
-                </Form>
+              <div className="control">
+                <TextField
+                  name="username"
+                  className="input"
+                  placeholder="Username"
+                  errorClassName="input is-danger"
+                  ref={usernameRef}
+                  validation={{
+                    required: {
+                      value: true,
+                      message: 'Username is required',
+                    },
+                  }}
+                />
               </div>
+
+              <FieldError name="username" className="is-danger" />
             </div>
-          </div>
-        </div>
-      </main>
+
+            <div className="field">
+              <Label
+                name="password"
+                className="label h4"
+                errorClassName="label is-danger"
+              >
+                Passphrase
+              </Label>
+              <div className="control">
+                <PasswordField
+                  name="password"
+                  className="input"
+                  placeholder="************************"
+                  errorClassName="input is-danger"
+                  autoComplete="current-password"
+                  validation={{
+                    required: {
+                      value: true,
+                      message: 'Password is required',
+                    },
+                  }}
+                />
+              </div>
+              <FieldError name="password" className="is-danger" />
+            </div>
+
+            <Submit className="button is-primary is-large is-fullwidth">
+              Login
+            </Submit>
+          </Form>
+          <hr />
+        </main>
+
+        <footer className="has-text-centered">
+          <h6>
+            <small>
+              &copy;{' '}
+              <a
+                href="https://www.darrensopiarz.com/"
+                target={'_blank'}
+                rel="noreferrer"
+              >
+                d11z
+              </a>
+            </small>
+          </h6>
+        </footer>
+      </div>
     </>
   )
 }

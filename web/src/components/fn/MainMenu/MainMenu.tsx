@@ -47,14 +47,6 @@ const MainMenu = () => {
             </li>
             <li>
               <Link
-                className="button small secondary"
-                to={routes.calculators()}
-              >
-                Calculators
-              </Link>
-            </li>
-            <li>
-              <Link
                 className="button small hollow menu-text"
                 to={routes.profile()}
               >
