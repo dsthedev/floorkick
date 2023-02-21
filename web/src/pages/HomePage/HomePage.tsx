@@ -101,6 +101,16 @@ const HomePage = () => {
           </>
         )}
         <footer className="has-text-centered">
+          {isAuthenticated ? (
+            <>
+              <LoginOrOutLink
+                loggedInClass={'button is-small is-danger is-light'}
+                loggedOutClass={'button is-small is-primary is-light'}
+              />
+            </>
+          ) : (
+            false
+          )}
           <h6>
             <small>
               &copy;{' '}

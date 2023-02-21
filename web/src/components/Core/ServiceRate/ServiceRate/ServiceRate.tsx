@@ -1,11 +1,13 @@
+import type {
+  DeleteServiceRateMutationVariables,
+  FindServiceRateById,
+} from 'types/graphql'
 
 import { Link, routes, navigate } from '@redwoodjs/router'
 import { useMutation } from '@redwoodjs/web'
 import { toast } from '@redwoodjs/web/toast'
 
-import { timeTag,  } from 'src/lib/formatters'
-
-import type { DeleteServiceRateMutationVariables, FindServiceRateById } from 'types/graphql'
+import { timeTag } from 'src/lib/formatters'
 
 const DELETE_SERVICE_RATE_MUTATION = gql`
   mutation DeleteServiceRateMutation($id: Int!) {
@@ -49,31 +51,40 @@ const ServiceRate = ({ serviceRate }: Props) => {
             <tr>
               <th>Id</th>
               <td>{serviceRate.id}</td>
-            </tr><tr>
+            </tr>
+            <tr>
               <th>Value</th>
               <td>{serviceRate.value}</td>
-            </tr><tr>
+            </tr>
+            <tr>
               <th>Unit</th>
               <td>{serviceRate.unit}</td>
-            </tr><tr>
+            </tr>
+            <tr>
               <th>Task</th>
               <td>{serviceRate.task}</td>
-            </tr><tr>
+            </tr>
+            <tr>
               <th>Material</th>
               <td>{serviceRate.material}</td>
-            </tr><tr>
+            </tr>
+            <tr>
               <th>Modifiers</th>
               <td>{serviceRate.modifiers}</td>
-            </tr><tr>
+            </tr>
+            <tr>
               <th>Description</th>
               <td>{serviceRate.description}</td>
-            </tr><tr>
+            </tr>
+            <tr>
               <th>Author id</th>
               <td>{serviceRate.authorId}</td>
-            </tr><tr>
+            </tr>
+            <tr>
               <th>Created at</th>
               <td>{timeTag(serviceRate.createdAt)}</td>
-            </tr><tr>
+            </tr>
+            <tr>
               <th>Updated at</th>
               <td>{timeTag(serviceRate.updatedAt)}</td>
             </tr>

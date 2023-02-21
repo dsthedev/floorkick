@@ -33,7 +33,7 @@ interface JobSheetFormProps {
 }
 
 const JobSheetForm = (props: JobSheetFormProps) => {
-  const { currentUser } = useAuth()
+  const currentUser = useAuth()
 
   const jobIdValue = props.jobSheet ? props.jobSheet.jobId : uuidv4()
 
@@ -315,7 +315,7 @@ const JobSheetForm = (props: JobSheetFormProps) => {
             defaultValue={
               currentUser && props.jobSheet
                 ? props.jobSheet.authorId
-                : currentUser.id
+                : 'currentUser.id'
             }
             className="input"
             errorClassName="input input-error"

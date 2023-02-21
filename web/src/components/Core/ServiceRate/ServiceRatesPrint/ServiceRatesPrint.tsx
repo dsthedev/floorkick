@@ -15,7 +15,7 @@ import DisplayCurrency from 'src/components/fn/DisplayCurrency/DisplayCurrency'
 import { timeTag, truncate } from 'src/lib/formatters'
 
 const ServiceRatesPrintList = ({ serviceRates }: FindServiceRates) => {
-  const { currentUser } = useAuth()
+  const currentUser = useAuth()
 
   const [search, setSearch] = React.useState('')
   const [results, setResults] = React.useState([])
@@ -31,7 +31,6 @@ const ServiceRatesPrintList = ({ serviceRates }: FindServiceRates) => {
           item.material +
           item.modifiers +
           item.description
-        console.log(checkAgainstThis)
         return checkAgainstThis.toLowerCase().includes(search.toLowerCase())
       })
     } else {

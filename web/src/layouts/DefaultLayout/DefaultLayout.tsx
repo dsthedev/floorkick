@@ -37,13 +37,13 @@ const Default = ({
       <div className="container">
         <div className="section">
           <div className="box">
-            <header className="hide-for-print">
+            <header className="hide-for-print columns">
               {isAuthenticated ? (
                 <>
                   <nav
                     aria-label="breadcrumbs"
                     role="navigation"
-                    className="breadcrumb"
+                    className="breadcrumb column"
                   >
                     <ul>
                       <li>
@@ -58,6 +58,16 @@ const Default = ({
                       ) : (
                         false
                       )}
+                    </ul>
+                  </nav>
+                  <nav className="column has-text-right">
+                    <ul>
+                      <Link
+                        className="button is-small is-success"
+                        to={routes[buttonTo]()}
+                      >
+                        {buttonLabel}
+                      </Link>
                     </ul>
                   </nav>
                   <hr />

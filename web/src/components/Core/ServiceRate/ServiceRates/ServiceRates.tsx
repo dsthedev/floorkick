@@ -5,6 +5,7 @@ import type {
   FindServiceRates,
 } from 'types/graphql'
 
+import { useAuth } from '@redwoodjs/auth'
 import { Link, routes } from '@redwoodjs/router'
 import { useMutation } from '@redwoodjs/web'
 import { toast } from '@redwoodjs/web/toast'
@@ -36,7 +37,6 @@ const ServiceRatesList = ({ serviceRates }: FindServiceRates) => {
           item.material +
           item.modifiers +
           item.description
-        console.log(checkAgainstThis)
         return checkAgainstThis.toLowerCase().includes(search.toLowerCase())
       })
     } else {

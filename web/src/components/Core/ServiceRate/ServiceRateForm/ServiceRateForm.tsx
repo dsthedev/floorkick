@@ -27,7 +27,7 @@ interface ServiceRateFormProps {
 }
 
 const ServiceRateForm = (props: ServiceRateFormProps) => {
-  const { currentUser } = useAuth()
+  const currentUser = useAuth()
 
   const [currencyDisplay, setCurrencyDisplay] = useState(
     props.serviceRate?.value
