@@ -75,6 +75,12 @@ const HomePage = () => {
                 >
                   Rates
                 </Link>
+                <Link
+                  className="button is-small is-light is-fullswidth"
+                  to={routes.resources()}
+                >
+                  Resources
+                </Link>
               </nav>
               <hr />
             </main>

@@ -9,11 +9,13 @@
   - [ ] At very end, show common splits for 50/50 & 33/33/33
     - [ ] Ideally, some kind of smart selector for bill split and payee label would be nice
 - [ ] Provide model for "Job" & "Invoice" that mimic Estimate, with ability to "move/convert" between
+- [ ] CRUDify resources instead of hard coding onto page content
+
+- [ ] Add "Term" object model w/ crud and public facing defintion listing page
 
 ## 2023.03.12
 
-- [ ] Add resources page to list flooring related hyperlinks
-- [ ] Add "Term" object model w/ crud and public facing defintion listing page
+- [x] Add resources page to list flooring related hyperlinks
 
 ## 2023.01.30
 

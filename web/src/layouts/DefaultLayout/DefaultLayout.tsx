@@ -49,7 +49,7 @@ const Default = ({
                       <li>
                         <Link to={routes.home()}>Floorkick</Link>
                       </li>
-                      {isAuthenticated && !isHomePage ? (
+                      {!isHomePage ? (
                         <>
                           <li>
                             <Link to={routes[titleTo]()}>{title}</Link>
