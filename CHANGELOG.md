@@ -1,5 +1,20 @@
 # Floorkick Changelog
 
+## @TODO:
+
+- [ ] Rebuild "JobSheets" as "Estimates" with better CRUD
+  - [ ] Fix/implement GPS location saving feature
+  - [ ] Get "line items" option added to add/remove line items w/ working total
+  - [ ] After line items work, add an adjustment field
+  - [ ] At very end, show common splits for 50/50 & 33/33/33
+    - [ ] Ideally, some kind of smart selector for bill split and payee label would be nice
+- [ ] Provide model for "Job" & "Invoice" that mimic Estimate, with ability to "move/convert" between
+
+## 2023.03.12
+
+- [ ] Add resources page to list flooring related hyperlinks
+- [ ] Add "Term" object model w/ crud and public facing defintion listing page
+
 ## 2023.01.30
 
 - reimplements jobsheets from before with a few tweaks
