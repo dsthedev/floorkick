@@ -76,7 +76,13 @@ const HomePage = () => {
                   Rates
                 </Link>
                 <Link
-                  className="button is-small is-light is-fullswidth"
+                  className="h6 button is-small is-black"
+                  to={routes.calculators()}
+                >
+                  Calculators
+                </Link>
+                <Link
+                  className="h6 button is-small is-light"
                   to={routes.resources()}
                 >
                   Resources

@@ -22,8 +22,11 @@ const CalculateRollLengthFromTotalYardage = () => {
       </header>
 
       <section>
-        <label className="label">Total Yardage</label>
+        <label htmlFor="totalYardage" className="label">
+          Total Yardage
+        </label>
         <input
+          name="totalYardage"
           className="input"
           type="number"
           value={yardage}
@@ -31,14 +34,17 @@ const CalculateRollLengthFromTotalYardage = () => {
           placeholder="100"
         />
 
-        <label className="label">Roll Width</label>
+        <label htmlFor="forRollWidth" className="label">
+          Roll Width
+        </label>
         <select
+          name="forRollWidth"
           value={rollWidth}
           onChange={handleRollWidthChange}
           className="input"
         >
-          <option value="12">12'</option>
-          <option value="15">15'</option>
+          <option value="12">{"12'"}</option>
+          <option value="15">{"15'"}</option>
         </select>
       </section>
 

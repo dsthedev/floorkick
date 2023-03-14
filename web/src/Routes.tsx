@@ -31,9 +31,11 @@ const Routes = () => {
       </Set>
 
       <Set wrap={DefaultLayout} title="Floorkick" titleTo="home" buttonLabel="Home" buttonTo="home">
-        <Route path="/profile" page={ProfilePage} name="profile" />
         <Route path="/sandbox" page={SandboxPage} name="sandbox" />
+
+        <Route path="/profile" page={ProfilePage} name="profile" />
         <Route path="/resources" page={ResourcesPage} name="resources" />
+        <Route path="/calculators" page={CalculatorsPage} name="calculators" />
 
         {/* <Route path="/signup" page={SignupPage} name="signup" /> */}
         {/* <Route path="/forgot-password" page={ForgotPasswordPage} name="forgotPassword" /> */}
