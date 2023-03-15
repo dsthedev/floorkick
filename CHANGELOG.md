@@ -12,11 +12,10 @@
 - [ ] CRUDify resources instead of hard coding onto page content
 
 - [ ] Add "Term" object model w/ crud and public facing defintion listing page
-- [ ] Improve plank incrementor calculator to calculate properly using useEffect() to update state variables before used elsewhere
 
 ## 2023.03.12
 
-- [x] Created alpha version of plank incrementor calculator, needs work
+- [x] Created alpha version of plank incrementor calculator, color coded, can only check 1 distance
 
 ## 2023.03.12
 

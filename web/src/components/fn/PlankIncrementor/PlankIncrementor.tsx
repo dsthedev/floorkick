@@ -7,19 +7,26 @@ const PlankIncrementor = () => {
 
   const [distanceOne, setDistanceOne] = useState(plankWidth)
   const [distanceOneRemainder, setDistanceOneRemainder] = useState('0')
+  const [distanceOneRemainderColor, setDistanceOneRemainderColor] = useState(
+    'has-background-warning-light'
+  )
 
   const handlePlankWidthChange = (e) => {
     let cleanedNumber = parseFloat(e.target.value).toFixed(3).toString()
 
     if (isNaN(cleanedNumber)) {
-      cleanedNumber = 1
+      cleanedNumber = 0
     }
+
     setPlankWidth(parseFloat(cleanedNumber))
-    // setDistanceOneRemainder(calculateDistanceRemainder(distanceOne))
   }
 
   const handleRemainderThresholdChange = (e) => {
-    const cleanedNumber = parseFloat(e.target.value).toFixed(3).toString()
+    let cleanedNumber = parseFloat(e.target.value).toFixed(3).toString()
+
+    if (isNaN(cleanedNumber)) {
+      cleanedNumber = 0
+    }
 
     setRemainderThreshold(parseFloat(cleanedNumber))
   }
@@ -45,8 +52,21 @@ const PlankIncrementor = () => {
   }
 
   useEffect(() => {
+    if (distanceOneRemainder > remainderThreshold) {
+      setDistanceOneRemainderColor('has-background-success-light')
+    }
+    if (distanceOneRemainder < remainderThreshold) {
+      setDistanceOneRemainderColor('has-background-danger-light')
+    }
+    if (
+      distanceOneRemainder == 0 ||
+      distanceOneRemainder == remainderThreshold
+    ) {
+      setDistanceOneRemainderColor('has-background-warning-light')
+    }
+
     setDistanceOneRemainder(calculateDistanceRemainder(distanceOne))
-  }, [distanceOne, plankWidth])
+  }, [plankWidth, remainderThreshold, distanceOne, distanceOneRemainder])
 
   return (
     <>
@@ -60,7 +80,7 @@ const PlankIncrementor = () => {
               <div className="control">
                 <input
                   name="plankWidthControl"
-                  className="input"
+                  className="input is-size-4"
                   type="number"
                   min="0"
                   max="72"
@@ -86,7 +106,7 @@ const PlankIncrementor = () => {
               <div className="control">
                 <input
                   name="remainderThresholdControl"
-                  className="input"
+                  className="input is-size-4"
                   type="number"
                   min="0"
                   max="72"
@@ -106,47 +126,36 @@ const PlankIncrementor = () => {
         </div>
 
         <div className="columns">
+          <div className="column is-half">
+            <div className="field">
+              <label htmlFor="distanceOneControl" className="label">
+                Check Distance
+              </label>
+              <div className="control">
+                <input
+                  name="distanceOneControl"
+                  className="input is-size-4"
+                  type="number"
+                  min={plankWidth}
+                  step="0.01"
+                  placeholder="7.25"
+                  value={distanceOne}
+                  onChange={handleDistanceOneChange}
+                />
+                <p className="help">
+                  {
+                    'Enter a distance to check in inches as a decimal (1/4in == 0.25).'
+                  }
+                </p>
+              </div>
+            </div>
+          </div>
           <div className="column">
-            <table>
-              <thead>
-                <tr>
-                  <th>Distance</th>
-                  <th>Remainder</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>
-                    <span className="field">
-                      <label
-                        htmlFor="distanceOneControl"
-                        className="label is-hidden"
-                      >
-                        Distance #1
-                      </label>
-                      <span className="control">
-                        <input
-                          name="distanceOneControl"
-                          className="input is-large"
-                          type="number"
-                          min={plankWidth}
-                          step="0.01"
-                          placeholder="7.25"
-                          value={distanceOne}
-                          onChange={handleDistanceOneChange}
-                        />
-                      </span>
-                    </span>
-                  </td>
-                  <td>
-                    <h6 className="is-size-2 mb-0">{distanceOneRemainder}"</h6>
-                    <small>
-                      ({parseFloat(distanceOne / plankWidth).toFixed(3)})
-                    </small>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
+            <div className={distanceOneRemainderColor + ' box'}>
+              <h5 className="is-size-6 mb-0">Remainder:</h5>
+              <h6 className="is-size-4 mb-0">{distanceOneRemainder}"</h6>
+              <small>({parseFloat(distanceOne / plankWidth).toFixed(3)})</small>
+            </div>
           </div>
         </div>
 
