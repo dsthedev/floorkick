@@ -2,6 +2,7 @@ import { Link, routes } from '@redwoodjs/router'
 import { MetaTags } from '@redwoodjs/web'
 
 import CalculateRollLengthFromTotalYardage from 'src/components/fn/CalculateRollLengthFromTotalYardage/CalculateRollLengthFromTotalYardage'
+import PlankIncrementor from 'src/components/fn/PlankIncrementor/PlankIncrementor'
 
 const CalculatorsPage = () => {
   return (
@@ -14,11 +15,21 @@ const CalculatorsPage = () => {
         </div>
       </header>
 
-      <main className="columns">
-        <section className="column">
-          <CalculateRollLengthFromTotalYardage></CalculateRollLengthFromTotalYardage>
+      <main className="columns is-multiline is-centered">
+        <section className="column is-three-quarters">
+          <div className="content">
+            <PlankIncrementor></PlankIncrementor>
+          </div>
         </section>
       </main>
+      <hr />
+      <aside className="columns is-multiline is-centered">
+        <section className="column is-half">
+          <div className="content">
+            {/* <CalculateRollLengthFromTotalYardage></CalculateRollLengthFromTotalYardage> */}
+          </div>
+        </section>
+      </aside>
 
       <footer className="columns">
         <div className="column">
