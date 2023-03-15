@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 const PlankIncrementor = () => {
   const [plankWidth, setPlankWidth] = useState(7.25)
@@ -15,7 +15,7 @@ const PlankIncrementor = () => {
       cleanedNumber = 1
     }
     setPlankWidth(parseFloat(cleanedNumber))
-    setDistanceOneRemainder(calculateDistanceRemainder(distanceOne))
+    // setDistanceOneRemainder(calculateDistanceRemainder(distanceOne))
   }
 
   const handleRemainderThresholdChange = (e) => {
@@ -32,7 +32,7 @@ const PlankIncrementor = () => {
     }
 
     setDistanceOne(parseFloat(cleanedNumber))
-    setDistanceOneRemainder(calculateDistanceRemainder(distanceOne))
+    // setDistanceOneRemainder(calculateDistanceRemainder(distanceOne))
   }
 
   const calculateDistanceRemainder = (distance: number) => {
@@ -43,6 +43,10 @@ const PlankIncrementor = () => {
 
     return parseFloat(flooredRemainderInInches.toFixed(3))
   }
+
+  useEffect(() => {
+    setDistanceOneRemainder(calculateDistanceRemainder(distanceOne))
+  }, [distanceOne, plankWidth])
 
   return (
     <>
@@ -135,9 +139,7 @@ const PlankIncrementor = () => {
                     </span>
                   </td>
                   <td>
-                    <h6 className="is-size-2 mb-0">
-                      {distanceOneRemainder.toString()}"
-                    </h6>
+                    <h6 className="is-size-2 mb-0">{distanceOneRemainder}"</h6>
                     <small>
                       ({parseFloat(distanceOne / plankWidth).toFixed(3)})
                     </small>
