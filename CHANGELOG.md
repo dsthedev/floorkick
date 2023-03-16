@@ -13,7 +13,11 @@
 
 - [ ] Add "Term" object model w/ crud and public facing defintion listing page
 
-## 2023.03.12
+## 2023.03.14
+
+- [x] adds isitadrop calc and cleansup calculator features
+
+## 2023.03.14
 
 - [x] Created alpha version of plank incrementor calculator, color coded, can only check 1 distance
 
