@@ -103,12 +103,18 @@ const HomePage = () => {
             </header>
 
             <main className="has-text-centered">
-              <hr />
-              <LoginOrOutLink
-                loggedInClass={'button is-large is-warning is-responsive'}
-                loggedOutClass={'button is-large is-primary is-responsive'}
-              />
-              <hr />
+              <div className="menu-list my-6">
+                <LoginOrOutLink
+                  loggedInClass={'button is-large is-warning is-responsive'}
+                  loggedOutClass={'button is-large is-primary is-responsive'}
+                />
+                <Link
+                  className="button is-outlined is-small is-rounded my-6"
+                  to={routes.calculators()}
+                >
+                  Calculators
+                </Link>
+              </div>
             </main>
           </>
         )}

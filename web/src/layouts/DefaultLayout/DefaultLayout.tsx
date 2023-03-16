@@ -79,7 +79,10 @@ const Default = ({
 
             {children}
 
-            <footer id="footerbar" className="hide-for-print">
+            <footer
+              id="footerbar"
+              className="hide-for-print has-text-centered my-4"
+            >
               {isAuthenticated ? (
                 <>
                   <div>

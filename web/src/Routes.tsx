@@ -37,6 +37,10 @@ const Routes = () => {
         <Route path="/resources" page={ResourcesPage} name="resources" />
         <Route path="/calculators" page={CalculatorsPage} name="calculators" />
 
+        <Route path="/totalyardtorolllength" page={TotalyardtorolllengthPage} name="totalyardtorolllength" />
+        <Route path="/plankincrementor" page={PlankincrementorPage} name="plankincrementor" />
+        <Route path="/isitadrop" page={IsitadropPage} name="isitadrop" />
+
         {/* <Route path="/signup" page={SignupPage} name="signup" /> */}
         {/* <Route path="/forgot-password" page={ForgotPasswordPage} name="forgotPassword" /> */}
         <Route path="/reset-password" page={ResetPasswordPage} name="resetPassword" />
