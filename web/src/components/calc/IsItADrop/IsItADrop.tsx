@@ -14,35 +14,43 @@ const IsItADrop = () => {
   const cleanInt = (numToClean: number) => {
     let cleanedNumber = parseInt(numToClean).toFixed(0).toString()
 
+    cleanedNumber.replace(/^0+/, '')
+
     if (isNaN(cleanedNumber)) {
       cleanedNumber = 0
     }
 
-    return cleanedNumber
+    return parseInt(cleanedNumber)
   }
 
   const handleRoomWidthFtChange = (e) => {
     const cleanedNumber = cleanInt(e.target.value)
 
-    setRoomWidthFt(parseInt(cleanedNumber))
+    setRoomWidthFt(cleanedNumber)
   }
-
+  // generate javascript function to remove leading zeros from a string input
   const handleRoomWidthInChange = (e) => {
-    const cleanedNumber = cleanInt(e.target.value)
+    let cleanedNumber = cleanInt(e.target.value)
+    if (cleanedNumber > 11) {
+      cleanedNumber = 11
+    }
 
-    setRoomWidthIn(parseInt(cleanedNumber))
+    setRoomWidthIn(cleanedNumber)
   }
 
   const handleRoomLengthFtChange = (e) => {
     const cleanedNumber = cleanInt(e.target.value)
 
-    setRoomLengthFt(parseInt(cleanedNumber))
+    setRoomLengthFt(cleanedNumber)
   }
 
   const handleRoomLengthInChange = (e) => {
-    const cleanedNumber = cleanInt(e.target.value)
+    let cleanedNumber = cleanInt(e.target.value)
+    if (cleanedNumber > 11) {
+      cleanedNumber = 11
+    }
 
-    setRoomLengthIn(parseInt(cleanedNumber))
+    setRoomLengthIn(cleanedNumber)
   }
 
   const handleRollWidthChange = (e) => {
@@ -155,7 +163,7 @@ const IsItADrop = () => {
           <div className="columns">
             <div className="column">
               <div className="content">
-                <blockquote className={blockquoteColor}>
+                <blockquote className={'is-size-3 ' + blockquoteColor}>
                   {roomHasSeam ? 'Bring a Seaming Iron!' : 'Its a Drop!'}
                 </blockquote>
               </div>
